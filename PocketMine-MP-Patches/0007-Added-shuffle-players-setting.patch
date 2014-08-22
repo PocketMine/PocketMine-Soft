@@ -1,0 +1,60 @@
+From da97a0d904537732a7a8094fa9858304d1c8cd7b Mon Sep 17 00:00:00 2001
+From: Shoghi Cervantes <shoghicp@gmail.com>
+Date: Sat, 23 Aug 2014 01:06:28 +0200
+Subject: [PATCH] Added shuffle-players setting
+
+
+diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
+index edf808c..d2208a5 100644
+--- a/src/pocketmine/Server.php
++++ b/src/pocketmine/Server.php
+@@ -1649,6 +1649,10 @@ class Server{
+ 			$this->scheduler->scheduleDelayedRepeatingTask(new CallbackTask([$this, "doLevelGC"]), $this->getProperty("chunk-gc.period-in-ticks", 600), $this->getProperty("chunk-gc.period-in-ticks", 600));
+ 		}
+ 
++		if($this->getAdvancedProperty("main.player-shuffle", 0) > 0){
++			$this->scheduler->scheduleDelayedRepeatingTask(new CallbackTask([$this, "shufflePlayers"]), $this->getAdvancedProperty("main.player-shuffle", 0), $this->getAdvancedProperty("main.player-shuffle", 0));
++		}
++
+ 		$this->enablePlugins(PluginLoadOrder::POSTWORLD);
+ 
+ 		$this->start();
+@@ -2141,4 +2145,19 @@ class Server{
+ 		return false;
+ 	}
+ 
++	public function shufflePlayers(){
++		if(count($this->players) <= 1){
++			return;
++		}
++
++		$keys = array_keys($this->players);
++		shuffle($keys);
++		$random = [];
++		foreach ($keys as $key) {
++			$random[$key] = $this->players[$key];
++		}
++
++		$this->players = $random;
++	}
++
+ }
+diff --git a/src/pocketmine/resources/pocketmine-soft.yml b/src/pocketmine/resources/pocketmine-soft.yml
+index bb4257c..ec89b09 100644
+--- a/src/pocketmine/resources/pocketmine-soft.yml
++++ b/src/pocketmine/resources/pocketmine-soft.yml
+@@ -18,4 +18,8 @@ messages:
+ 
+ main:
+  #Block unknown items from creative-mode players
+- filter-creative-items: true
+\ No newline at end of file
++ filter-creative-items: true
++
++ #Shuffle the player list to prevet players from 'gaming' the server, getting high priority on the tick list.
++ #Value is in ticks, so 20 = shuffle each second
++ player-shuffle: 0
+\ No newline at end of file
+-- 
+1.9.1
+

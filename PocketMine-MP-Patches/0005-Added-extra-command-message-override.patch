@@ -1,0 +1,84 @@
+From 49f7151f00e69cc8b00ef6e31196a291c018a49b Mon Sep 17 00:00:00 2001
+From: Shoghi Cervantes <shoghicp@gmail.com>
+Date: Sat, 23 Aug 2014 00:56:33 +0200
+Subject: [PATCH] Added extra command message override
+
+
+diff --git a/pocketmine-soft.yml b/pocketmine-soft.yml
+new file mode 100644
+index 00000000..ae50745
+--- /dev/null
++++ b/pocketmine-soft.yml
+@@ -0,0 +1,9 @@
++# Advanced configuration file for PocketMine-Soft
++
++# Lists the plugins that should be downloaded if non existent to the server.
++# Plugin names are case-sensitive.
++# Plugins can also be in the current filesystem
++plugins:
++ #Examples:
++ BigBrother: "https://github.com/shoghicp/BigBrother/releases/download/v1.3.0-beta/BigBrother_v1.3.0-beta.phar"
++ #SimpleAuth: "/full/path/to/file/SimpleAuth.phar"
+diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
+index d8b8917..edf808c 100644
+--- a/src/pocketmine/Server.php
++++ b/src/pocketmine/Server.php
+@@ -1761,7 +1761,10 @@ class Server{
+ 		}
+ 
+ 		if($sender instanceof Player){
+-			$sender->sendMessage("Unknown command. Type \"/help\" for help.");
++			$message = $this->getAdvancedProperty("messages.unknown-command", "Unknown command. Type \"/help\" for help.");
++			if(is_string($message) and strlen($message) > 0){
++				$sender->sendMessage($message);
++			}
+ 		}else{
+ 			$sender->sendMessage("Unknown command. Type \"help\" for help.");
+ 		}
+diff --git a/src/pocketmine/command/Command.php b/src/pocketmine/command/Command.php
+index 21717ad..d105c70 100644
+--- a/src/pocketmine/command/Command.php
++++ b/src/pocketmine/command/Command.php
+@@ -124,7 +124,10 @@ abstract class Command{
+ 		}
+ 
+ 		if($this->permissionMessage === null){
+-			$target->sendMessage(TextFormat::RED . "You don't have permissions to use this command.");
++			$message = $target->getServer()->getAdvancedProperty("messages.command-permissions", TextFormat::RED . "You don't have permissions to use this command.");
++			if(is_string($message) and strlen($message) > 0){
++				$target->sendMessage($message);
++			}
+ 		}elseif($this->permissionMessage !== ""){
+ 			$target->sendMessage(str_replace("<permission>", $this->permission, $this->permissionMessage));
+ 		}
+diff --git a/src/pocketmine/resources/pocketmine-soft.yml b/src/pocketmine/resources/pocketmine-soft.yml
+index a19abf1..766c6bd 100644
+--- a/src/pocketmine/resources/pocketmine-soft.yml
++++ b/src/pocketmine/resources/pocketmine-soft.yml
+@@ -1,9 +1,17 @@
+ # Advanced configuration file for PocketMine-Soft
+ 
+-# Lists the plugins that should be downloaded if non existent to the server.
+-# Plugin names are case-sensitive.
+-# Plugins can also be in the current filesystem
++#Lists the plugins that should be downloaded if non existent to the server.
++#Plugin names are case-sensitive.
++#Plugins can also be in the current filesystem
+ plugins:
+  #Examples:
+  #BigBrother: "https://github.com/shoghicp/BigBrother/releases/download/v1.3.0-beta/BigBrother_v1.3.0-beta.phar"
+- #SimpleAuth: "/full/path/to/file/SimpleAuth.phar"
+\ No newline at end of file
++ #SimpleAuth: "/full/path/to/file/SimpleAuth.phar"
++
++messages:
++ #Message shown when a player uses a not registered or non-existent command
++ unknown-command: 'Unknown command. Type "/help" for help.'
++
++ #Message shown by default when a player doesn't have permissions to use a command
++ #Can be overriden by the command
++ command-permissions: "§cYou don't have permissions to use this command."
+\ No newline at end of file
+-- 
+1.9.1
+
