@@ -1,3 +1,6 @@
 [submodule "PocketMine-MP"]
 	path = PocketMine-MP
-	url = https://github.com/PocketMine/PocketMine-MP.git
+	url = git@github.com:PocketMine/PocketMine-MP.git
+[submodule "PocketMine-Soft-Core"]
+	path = PocketMine-Soft-Core
+	url = git@github.com:PocketMine/PocketMine-Soft-Core.git

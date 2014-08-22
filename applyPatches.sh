@@ -12,7 +12,7 @@ function applyPatch {
 
     cd "$basedir"
     if [ ! -d  "$basedir/$target" ]; then
-        git clone $1 $target -b upstream
+        git clone $1 $target --recursive -b upstream
     fi
     cd "$basedir/$target"
     echo "Resetting $target to $what..."
@@ -34,4 +34,4 @@ function applyPatch {
     fi
 }
 
-applyPatch PocketMine-MP PocketMine-Soft
+applyPatch PocketMine-MP PocketMine-Soft-Core

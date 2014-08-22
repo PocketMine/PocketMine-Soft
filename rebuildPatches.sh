@@ -34,4 +34,4 @@ function savePatches {
     echo "  Patches saved for $what to $what-Patches/"
 }
 
-savePatches PocketMine-MP PocketMine-Soft
+savePatches PocketMine-MP PocketMine-Soft-Core
