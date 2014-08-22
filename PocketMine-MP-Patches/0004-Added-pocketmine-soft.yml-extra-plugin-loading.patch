@@ -1,0 +1,127 @@
+From 36d55b5bac955d2b5523681d2284e9ad7781d7cb Mon Sep 17 00:00:00 2001
+From: Shoghi Cervantes <shoghicp@gmail.com>
+Date: Sat, 23 Aug 2014 00:31:29 +0200
+Subject: [PATCH] Added pocketmine-soft.yml, extra plugin loading
+
+
+diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
+index 02a5621..d8b8917 100644
+--- a/src/pocketmine/Server.php
++++ b/src/pocketmine/Server.php
+@@ -185,6 +185,9 @@ class Server{
+ 	/** @var Config */
+ 	private $config;
+ 
++	/** @var Config */
++	private $softConfig;
++
+ 	/** @var Player[] */
+ 	private $players = [];
+ 
+@@ -1150,6 +1153,34 @@ class Server{
+ 		return $this->properties->exists($variable) ? $this->properties->get($variable) : $defaultValue;
+ 	}
+ 
++
++	/**
++	 * @param string $variable
++	 * @param mixed  $defaultValue
++	 *
++	 * @return mixed
++	 */
++	public function getAdvancedProperty($variable, $defaultValue = null){
++		$vars = explode(".", $variable);
++		$base = array_shift($vars);
++		if($this->softConfig->exists($base)){
++			$base = $this->softConfig->get($base);
++		}else{
++			return $defaultValue;
++		}
++
++		while(count($vars) > 0){
++			$baseKey = array_shift($vars);
++			if(is_array($base) and isset($base[$baseKey])){
++				$base = $base[$baseKey];
++			}else{
++				return $defaultValue;
++			}
++		}
++
++		return $base;
++	}
++
+ 	/**
+ 	 * @param string $variable
+ 	 * @param mixed  $defaultValue
+@@ -1416,6 +1447,13 @@ class Server{
+ 		$version = new VersionString($this->getPocketMineVersion());
+ 		$this->logger->info("Starting Minecraft: PE server version " . TextFormat::AQUA . $this->getVersion());
+ 
++		$this->logger->info("Loading pocketmine-soft.yml...");
++		if(!file_exists($this->dataPath . "pocketmine-soft.yml")){
++			$content = file_get_contents($this->filePath . "src/pocketmine/resources/pocketmine-soft.yml");
++			@file_put_contents($this->dataPath . "pocketmine-soft.yml", $content);
++		}
++		$this->softConfig = new Config($this->dataPath . "pocketmine-soft.yml", Config::YAML, []);
++
+ 		$this->logger->info("Loading pocketmine.yml...");
+ 		if(!file_exists($this->dataPath . "pocketmine.yml")){
+ 			$content = file_get_contents($this->filePath . "src/pocketmine/resources/pocketmine.yml");
+@@ -1522,7 +1560,29 @@ class Server{
+ 		register_shutdown_function([$this, "crashDump"]);
+ 		register_shutdown_function([$this, "forceShutdown"]);
+ 
+-		$this->pluginManager->loadPlugins($this->pluginPath);
++		$plugins = $this->pluginManager->loadPlugins($this->pluginPath);
++
++		$configPlugins = $this->getAdvancedProperty("plugins", []);
++		if(count($configPlugins) > 0){
++			$this->getLogger()->info("Checking extra plugins");
++			$loadNew = false;
++			foreach($configPlugins as $plugin => $download){
++				if(!isset($plugins[$plugin])){
++					$path = $this->pluginPath . "/". $plugin . ".phar";
++					if(substr($download, 0, 4) === "http"){
++						$this->getLogger()->info("Downloading ". $plugin);
++						file_put_contents($path, Utils::getURL($download));
++					}else{
++						file_put_contents($path, file_get_contents($download));
++					}
++					$loadNew = true;
++				}
++			}
++
++			if($loadNew){
++				$this->pluginManager->loadPlugins($this->pluginPath);
++			}
++		}
+ 
+ 		$this->updater = new AutoUpdater($this, $this->getProperty("auto-updater.host", "www.pocketmine.net"));
+ 
+@@ -1747,6 +1807,7 @@ class Server{
+ 
+ 		$this->pluginManager->registerInterface("pocketmine\\plugin\\PharPluginLoader");
+ 		$this->pluginManager->loadPlugins($this->pluginPath);
++
+ 		$this->enablePlugins(PluginLoadOrder::STARTUP);
+ 		$this->enablePlugins(PluginLoadOrder::POSTWORLD);
+ 		TimingsHandler::reload();
+diff --git a/src/pocketmine/resources/pocketmine-soft.yml b/src/pocketmine/resources/pocketmine-soft.yml
+new file mode 100644
+index 00000000..a19abf1
+--- /dev/null
++++ b/src/pocketmine/resources/pocketmine-soft.yml
+@@ -0,0 +1,9 @@
++# Advanced configuration file for PocketMine-Soft
++
++# Lists the plugins that should be downloaded if non existent to the server.
++# Plugin names are case-sensitive.
++# Plugins can also be in the current filesystem
++plugins:
++ #Examples:
++ #BigBrother: "https://github.com/shoghicp/BigBrother/releases/download/v1.3.0-beta/BigBrother_v1.3.0-beta.phar"
++ #SimpleAuth: "/full/path/to/file/SimpleAuth.phar"
+\ No newline at end of file
+-- 
+1.9.1
+
