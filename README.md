@@ -22,6 +22,11 @@ Commit: `git commit -m <msg>`
 
 Create patch: `./rebuildPatches.sh`
 
+### Install PocketMine-Soft ###
+
+On Linux: `wget -q -O - http://get.pocketmine.net/ | bash -s - -v soft`
+
+On MacOS: `curl -sL http://get.pocketmine.net/ | bash -s - -v soft`
 
 
 

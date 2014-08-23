@@ -1,0 +1,37 @@
+From 32e8fade6df461c0d1237784327b61701a9df5b7 Mon Sep 17 00:00:00 2001
+From: Shoghi Cervantes <shoghicp@gmail.com>
+Date: Sat, 23 Aug 2014 11:40:09 +0200
+Subject: [PATCH] Enabled debug commands by default
+
+
+diff --git a/pocketmine-soft.yml b/pocketmine-soft.yml
+deleted file mode 100644
+index ae50745..00000000
+--- a/pocketmine-soft.yml
++++ /dev/null
+@@ -1,9 +0,0 @@
+-# Advanced configuration file for PocketMine-Soft
+-
+-# Lists the plugins that should be downloaded if non existent to the server.
+-# Plugin names are case-sensitive.
+-# Plugins can also be in the current filesystem
+-plugins:
+- #Examples:
+- BigBrother: "https://github.com/shoghicp/BigBrother/releases/download/v1.3.0-beta/BigBrother_v1.3.0-beta.phar"
+- #SimpleAuth: "/full/path/to/file/SimpleAuth.phar"
+diff --git a/src/pocketmine/resources/pocketmine.yml b/src/pocketmine/resources/pocketmine.yml
+index 3915c6b..0c88986 100644
+--- a/src/pocketmine/resources/pocketmine.yml
++++ b/src/pocketmine/resources/pocketmine.yml
+@@ -21,7 +21,7 @@ debug:
+  #If > 1, it will show debug messages in the console
+  level: 1
+  #Enables /status
+- commands: false
++ commands: true
+ 
+ level-settings:
+  #The default format that levels will use when created
+-- 
+1.9.1
+
