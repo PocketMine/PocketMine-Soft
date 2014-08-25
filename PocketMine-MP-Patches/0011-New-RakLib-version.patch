@@ -1,0 +1,16 @@
+From 0ede69aaeae8492f5db5fceac842e9370567ff10 Mon Sep 17 00:00:00 2001
+From: Shoghi Cervantes <shoghicp@gmail.com>
+Date: Tue, 26 Aug 2014 00:11:10 +0200
+Subject: [PATCH] New RakLib version
+
+
+diff --git a/src/raklib b/src/raklib
+index d92a70e..fadd6a7 160000
+--- a/src/raklib
++++ b/src/raklib
+@@ -1 +1 @@
+-Subproject commit d92a70e0aeeb36e9bd9b14098fc609d9efed5693
++Subproject commit fadd6a777956ead7f8e097a38051527cdc165ab2
+-- 
+1.9.1
+
