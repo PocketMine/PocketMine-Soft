@@ -1,0 +1,42 @@
+From 10f4508651d9c10892f127c75c30277a3c70692a Mon Sep 17 00:00:00 2001
+From: Shoghi Cervantes <shoghicp@gmail.com>
+Date: Tue, 26 Aug 2014 17:44:20 +0200
+Subject: [PATCH] Disable chunk ticking by default
+
+
+diff --git a/src/pocketmine/level/Level.php b/src/pocketmine/level/Level.php
+index dee5dd5..3d43273 100644
+--- a/src/pocketmine/level/Level.php
++++ b/src/pocketmine/level/Level.php
+@@ -231,7 +231,7 @@ class Level implements ChunkManager, Metadatable{
+ 		$this->nextSave = microtime(true) + 90;
+ 
+ 		$this->chunkTickRadius = min($this->server->getViewDistance(), max(1, (int) $this->server->getProperty("chunk-ticking.tick-radius", 3)));
+-		$this->chunksPerTick = (int) $this->server->getProperty("chunk-ticking.per-tick", 128);
++		$this->chunksPerTick = (int) $this->server->getProperty("chunk-ticking.per-tick", 0);
+ 		$this->chunkTickList = [];
+ 		$this->clearChunksOnTick = (bool) $this->server->getProperty("chunk-ticking.clear-tick-list", false);
+ 		$this->timings = new LevelTimings($this);
+diff --git a/src/pocketmine/resources/pocketmine.yml b/src/pocketmine/resources/pocketmine.yml
+index 0c88986..dddc756 100644
+--- a/src/pocketmine/resources/pocketmine.yml
++++ b/src/pocketmine/resources/pocketmine.yml
+@@ -40,7 +40,7 @@ chunk-sending:
+ 
+ chunk-ticking:
+  #Max amount of chunks processed each tick
+- per-tick: 80
++ per-tick: 0
+  #Radius of chunks around a player to tick
+  tick-radius: 2
+  light-updates: false
+diff --git a/src/raklib b/src/raklib
+index fadd6a7..d92a70e 160000
+--- a/src/raklib
++++ b/src/raklib
+@@ -1 +1 @@
+-Subproject commit fadd6a777956ead7f8e097a38051527cdc165ab2
++Subproject commit d92a70e0aeeb36e9bd9b14098fc609d9efed5693
+-- 
+1.9.1
+
