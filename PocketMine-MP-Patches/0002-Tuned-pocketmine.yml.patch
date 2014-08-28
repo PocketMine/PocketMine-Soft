@@ -1,14 +1,14 @@
-From ffb3996b4202b649f6f763364520898a211387a9 Mon Sep 17 00:00:00 2001
+From bf2ffb2cf897b01bf820a23262c439b8f8629201 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Fri, 22 Aug 2014 18:25:12 +0200
 Subject: [PATCH] Tuned pocketmine.yml
 
 
 diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
-index 6d2cab1..f104de2 100644
+index 28ca062..389336e 100644
 --- a/src/pocketmine/Player.php
 +++ b/src/pocketmine/Player.php
-@@ -586,7 +586,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -587,7 +587,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  			$this->chunkLoadTask->setNextRun($this->chunkLoadTask->getNextRun() + 30);
  		}else{
  			$count = 0;

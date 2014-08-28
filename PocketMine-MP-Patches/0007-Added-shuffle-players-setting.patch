@@ -1,14 +1,14 @@
-From 013e1385b18127d8b3d9c1f0d15790098fce5afc Mon Sep 17 00:00:00 2001
+From cf3c75766d882f287abdc8072d558875c5b9c1f3 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 01:06:28 +0200
 Subject: [PATCH] Added shuffle-players setting
 
 
 diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
-index 256473d..08fb83f 100644
+index 4f73f65..775a90c 100644
 --- a/src/pocketmine/Server.php
 +++ b/src/pocketmine/Server.php
-@@ -1649,6 +1649,10 @@ class Server{
+@@ -1648,6 +1648,10 @@ class Server{
  			$this->scheduler->scheduleDelayedRepeatingTask(new CallbackTask([$this, "doLevelGC"]), $this->getProperty("chunk-gc.period-in-ticks", 600), $this->getProperty("chunk-gc.period-in-ticks", 600));
  		}
  
@@ -19,7 +19,7 @@ index 256473d..08fb83f 100644
  		$this->enablePlugins(PluginLoadOrder::POSTWORLD);
  
  		$this->start();
-@@ -2148,4 +2152,19 @@ class Server{
+@@ -2151,4 +2155,19 @@ class Server{
  		return false;
  	}
  
