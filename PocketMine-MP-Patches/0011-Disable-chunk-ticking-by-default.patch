@@ -1,11 +1,11 @@
-From f76b9e8a4a18f4b53c4cfcca0e80c31b9de8b78d Mon Sep 17 00:00:00 2001
+From 0d4081f8a650e6b77eb02a3089d6ef9d2a0dab0b Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Tue, 26 Aug 2014 17:44:20 +0200
 Subject: [PATCH] Disable chunk ticking by default
 
 
 diff --git a/src/pocketmine/level/Level.php b/src/pocketmine/level/Level.php
-index 6f20f52..0378943 100644
+index 15e8253..6875514 100644
 --- a/src/pocketmine/level/Level.php
 +++ b/src/pocketmine/level/Level.php
 @@ -251,7 +251,7 @@ class Level implements ChunkManager, Metadatable{
@@ -30,13 +30,6 @@ index 0c88986..dddc756 100644
   #Radius of chunks around a player to tick
   tick-radius: 2
   light-updates: false
-diff --git a/src/raklib b/src/raklib
-index fadd6a7..d92a70e 160000
---- a/src/raklib
-+++ b/src/raklib
-@@ -1 +1 @@
--Subproject commit fadd6a777956ead7f8e097a38051527cdc165ab2
-+Subproject commit d92a70e0aeeb36e9bd9b14098fc609d9efed5693
 -- 
 1.9.1
 
