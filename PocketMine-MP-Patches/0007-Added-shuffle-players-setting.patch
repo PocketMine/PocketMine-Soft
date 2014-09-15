@@ -1,26 +1,26 @@
-From e122d6b03d5392c7cf08603b3cbfa7c0b045dc04 Mon Sep 17 00:00:00 2001
+From b7ecaacd7a0093c69422580f9ed1bd620e149f31 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 01:06:28 +0200
 Subject: [PATCH] Added shuffle-players setting
 
 
 diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
-index 3e26981..ad82173 100644
+index 02c9cda..41f3ef1 100644
 --- a/src/pocketmine/Server.php
 +++ b/src/pocketmine/Server.php
-@@ -1653,6 +1653,10 @@ class Server{
- 			$this->scheduler->scheduleDelayedRepeatingTask(new CallbackTask([$this, "doLevelGC"]), $this->getProperty("chunk-gc.period-in-ticks", 600), $this->getProperty("chunk-gc.period-in-ticks", 600));
- 		}
+@@ -1659,6 +1659,10 @@ class Server{
+ 
+ 		$this->enablePlugins(PluginLoadOrder::POSTWORLD);
  
 +		if($this->getAdvancedProperty("main.player-shuffle", 0) > 0){
 +			$this->scheduler->scheduleDelayedRepeatingTask(new CallbackTask([$this, "shufflePlayers"]), $this->getAdvancedProperty("main.player-shuffle", 0), $this->getAdvancedProperty("main.player-shuffle", 0));
 +		}
 +
- 		$this->enablePlugins(PluginLoadOrder::POSTWORLD);
- 
  		$this->start();
-@@ -2144,4 +2148,19 @@ class Server{
- 		return false;
+ 	}
+ 
+@@ -2134,4 +2138,19 @@ class Server{
+ 		return true;
  	}
  
 +	public function shufflePlayers(){
@@ -40,7 +40,7 @@ index 3e26981..ad82173 100644
 +
  }
 diff --git a/src/pocketmine/resources/pocketmine-soft.yml b/src/pocketmine/resources/pocketmine-soft.yml
-index bb4257c..ec89b09 100644
+index bb4257c..7dfa9da 100644
 --- a/src/pocketmine/resources/pocketmine-soft.yml
 +++ b/src/pocketmine/resources/pocketmine-soft.yml
 @@ -18,4 +18,8 @@ messages:
@@ -50,7 +50,7 @@ index bb4257c..ec89b09 100644
 - filter-creative-items: true
 \ No newline at end of file
 + filter-creative-items: true
-+
++ 
 + #Shuffle the player list to prevet players from 'gaming' the server, getting high priority on the tick list.
 + #Value is in ticks, so 20 = shuffle each second
 + player-shuffle: 0

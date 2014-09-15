@@ -1,14 +1,14 @@
-From e691437a5a7e8ac7888ec8ce901e6f146a14ecb4 Mon Sep 17 00:00:00 2001
+From 2b3267b0aeceb987bfafe24a057152f7c0bb0e1e Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 00:31:29 +0200
 Subject: [PATCH] Added pocketmine-soft.yml, extra plugin loading
 
 
 diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
-index eccc3ce..bbdced8 100644
+index 4a951ac..6a7c1c2 100644
 --- a/src/pocketmine/Server.php
 +++ b/src/pocketmine/Server.php
-@@ -184,6 +184,9 @@ class Server{
+@@ -183,6 +183,9 @@ class Server{
  	/** @var Config */
  	private $config;
  
@@ -18,7 +18,7 @@ index eccc3ce..bbdced8 100644
  	/** @var Player[] */
  	private $players = [];
  
-@@ -1154,6 +1157,34 @@ class Server{
+@@ -1158,6 +1161,34 @@ class Server{
  		return $this->properties->exists($variable) ? $this->properties->get($variable) : $defaultValue;
  	}
  
@@ -53,7 +53,7 @@ index eccc3ce..bbdced8 100644
  	/**
  	 * @param string $variable
  	 * @param mixed  $defaultValue
-@@ -1420,6 +1451,13 @@ class Server{
+@@ -1424,6 +1455,13 @@ class Server{
  		$version = new VersionString($this->getPocketMineVersion());
  		$this->logger->info("Starting Minecraft: PE server version " . TextFormat::AQUA . $this->getVersion());
  
@@ -67,7 +67,7 @@ index eccc3ce..bbdced8 100644
  		$this->logger->info("Loading pocketmine.yml...");
  		if(!file_exists($this->dataPath . "pocketmine.yml")){
  			$content = file_get_contents($this->filePath . "src/pocketmine/resources/pocketmine.yml");
-@@ -1526,7 +1564,29 @@ class Server{
+@@ -1530,7 +1568,29 @@ class Server{
  		register_shutdown_function([$this, "crashDump"]);
  		register_shutdown_function([$this, "forceShutdown"]);
  
@@ -98,7 +98,7 @@ index eccc3ce..bbdced8 100644
  
  		$this->updater = new AutoUpdater($this, $this->getProperty("auto-updater.host", "www.pocketmine.net"));
  
-@@ -1751,6 +1811,7 @@ class Server{
+@@ -1755,6 +1815,7 @@ class Server{
  
  		$this->pluginManager->registerInterface("pocketmine\\plugin\\PharPluginLoader");
  		$this->pluginManager->loadPlugins($this->pluginPath);
