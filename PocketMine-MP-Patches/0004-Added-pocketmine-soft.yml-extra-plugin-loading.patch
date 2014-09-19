@@ -1,14 +1,14 @@
-From 2b3267b0aeceb987bfafe24a057152f7c0bb0e1e Mon Sep 17 00:00:00 2001
+From 11d04952606948a2130da35b5d91a9f1bf094ec9 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 00:31:29 +0200
 Subject: [PATCH] Added pocketmine-soft.yml, extra plugin loading
 
 
 diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
-index 4a951ac..6a7c1c2 100644
+index 695601f..033d835 100644
 --- a/src/pocketmine/Server.php
 +++ b/src/pocketmine/Server.php
-@@ -183,6 +183,9 @@ class Server{
+@@ -188,6 +188,9 @@ class Server{
  	/** @var Config */
  	private $config;
  
@@ -18,7 +18,7 @@ index 4a951ac..6a7c1c2 100644
  	/** @var Player[] */
  	private $players = [];
  
-@@ -1158,6 +1161,34 @@ class Server{
+@@ -1163,6 +1166,35 @@ class Server{
  		return $this->properties->exists($variable) ? $this->properties->get($variable) : $defaultValue;
  	}
  
@@ -30,30 +30,31 @@ index 4a951ac..6a7c1c2 100644
 +	 * @return mixed
 +	 */
 +	public function getAdvancedProperty($variable, $defaultValue = null){
-+		$vars = explode(".", $variable);
-+		$base = array_shift($vars);
-+		if($this->softConfig->exists($base)){
-+			$base = $this->softConfig->get($base);
-+		}else{
-+			return $defaultValue;
++			$vars = explode(".", $variable);
++			$base = array_shift($vars);
++			if($this->softConfig->exists($base)){
++					$base = $this->softConfig->get($base);
++				}else{
++					return $defaultValue;
 +		}
 +
 +		while(count($vars) > 0){
-+			$baseKey = array_shift($vars);
-+			if(is_array($base) and isset($base[$baseKey])){
-+				$base = $base[$baseKey];
-+			}else{
-+				return $defaultValue;
++					$baseKey = array_shift($vars);
++					if(is_array($base) and isset($base[$baseKey])){
++							$base = $base[$baseKey];
++						}else{
++							return $defaultValue;
 +			}
 +		}
 +
 +		return $base;
 +	}
 +
++
  	/**
  	 * @param string $variable
  	 * @param mixed  $defaultValue
-@@ -1424,6 +1455,13 @@ class Server{
+@@ -1429,6 +1461,13 @@ class Server{
  		$version = new VersionString($this->getPocketMineVersion());
  		$this->logger->info("Starting Minecraft: PE server version " . TextFormat::AQUA . $this->getVersion());
  
@@ -63,11 +64,11 @@ index 4a951ac..6a7c1c2 100644
 +			@file_put_contents($this->dataPath . "pocketmine-soft.yml", $content);
 +		}
 +		$this->softConfig = new Config($this->dataPath . "pocketmine-soft.yml", Config::YAML, []);
-+
++		
  		$this->logger->info("Loading pocketmine.yml...");
  		if(!file_exists($this->dataPath . "pocketmine.yml")){
  			$content = file_get_contents($this->filePath . "src/pocketmine/resources/pocketmine.yml");
-@@ -1530,7 +1568,29 @@ class Server{
+@@ -1535,7 +1574,29 @@ class Server{
  		register_shutdown_function([$this, "crashDump"]);
  		register_shutdown_function([$this, "forceShutdown"]);
  
@@ -98,14 +99,6 @@ index 4a951ac..6a7c1c2 100644
  
  		$this->updater = new AutoUpdater($this, $this->getProperty("auto-updater.host", "www.pocketmine.net"));
  
-@@ -1755,6 +1815,7 @@ class Server{
- 
- 		$this->pluginManager->registerInterface("pocketmine\\plugin\\PharPluginLoader");
- 		$this->pluginManager->loadPlugins($this->pluginPath);
-+
- 		$this->enablePlugins(PluginLoadOrder::STARTUP);
- 		$this->enablePlugins(PluginLoadOrder::POSTWORLD);
- 		TimingsHandler::reload();
 diff --git a/src/pocketmine/resources/pocketmine-soft.yml b/src/pocketmine/resources/pocketmine-soft.yml
 new file mode 100644
 index 00000000..a19abf1
