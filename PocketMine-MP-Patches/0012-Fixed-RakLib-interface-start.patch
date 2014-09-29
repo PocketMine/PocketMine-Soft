@@ -1,11 +1,11 @@
-From df0fc65d6911fb7c95dfe69acfb7921da853abc2 Mon Sep 17 00:00:00 2001
+From 25a9d32862385e30dbc40815e3ed5da17b1281f6 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Mon, 1 Sep 2014 18:32:00 +0200
 Subject: [PATCH] Fixed RakLib interface start
 
 
 diff --git a/src/pocketmine/network/RakLibInterface.php b/src/pocketmine/network/RakLibInterface.php
-index 28de638..a9ed4fb 100644
+index 1dd3503..cae585f 100644
 --- a/src/pocketmine/network/RakLibInterface.php
 +++ b/src/pocketmine/network/RakLibInterface.php
 @@ -107,8 +107,7 @@ class RakLibInterface implements ServerInstance, SourceInterface{
@@ -17,7 +17,7 @@ index 28de638..a9ed4fb 100644
 +		if(!$this->server->getAdvancedProperty("main.session-port-checking", true)){
  			$this->setPortCheck(false);
  		}
- 		$this->tickTask = $this->server->getScheduler()->scheduleRepeatingTask(new CallbackTask([$this, "doTick"]), 1);
+ 
 @@ -378,4 +377,4 @@ class RakLibInterface implements ServerInstance, SourceInterface{
  
  		return $data;

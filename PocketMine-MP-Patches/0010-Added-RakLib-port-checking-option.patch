@@ -1,11 +1,11 @@
-From 743515e14a25db521f4af6ce3b6c949b45f76718 Mon Sep 17 00:00:00 2001
+From 3f59566b2b7684a1ed7253856bc26de0fc8d9748 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sun, 24 Aug 2014 17:26:54 +0200
 Subject: [PATCH] Added RakLib port checking option
 
 
 diff --git a/src/pocketmine/network/RakLibInterface.php b/src/pocketmine/network/RakLibInterface.php
-index 89c989a..28de638 100644
+index 89c989a..1dd3503 100644
 --- a/src/pocketmine/network/RakLibInterface.php
 +++ b/src/pocketmine/network/RakLibInterface.php
 @@ -107,6 +107,11 @@ class RakLibInterface implements ServerInstance, SourceInterface{
@@ -16,7 +16,7 @@ index 89c989a..28de638 100644
 +		if(!$server->getAdvancedProperty("main.session-port-checking", true)){
 +			$this->setPortCheck(false);
 +		}
-+		$this->tickTask = $this->server->getScheduler()->scheduleRepeatingTask(new CallbackTask([$this, "doTick"]), 1);
++
  	}
  
  	public function doTick(){
