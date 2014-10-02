@@ -1,14 +1,14 @@
-From f2161aca55825c05ca383327d7f1e882279379be Mon Sep 17 00:00:00 2001
+From ea36e2bd2329905fe58667e422a1bebfc4a15e35 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Fri, 22 Aug 2014 18:25:12 +0200
 Subject: [PATCH] Tuned pocketmine.yml
 
 
 diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
-index db11a2f..d2156df 100644
+index 555cda2..41e9e08 100644
 --- a/src/pocketmine/Player.php
 +++ b/src/pocketmine/Player.php
-@@ -601,7 +601,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -602,7 +602,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  			$this->chunkLoadTask->setNextRun($this->chunkLoadTask->getNextRun() + 30);
  		}else{
  			$count = 0;
@@ -18,7 +18,7 @@ index db11a2f..d2156df 100644
  				if($count >= $limit){
  					break;
 diff --git a/src/pocketmine/resources/pocketmine.yml b/src/pocketmine/resources/pocketmine.yml
-index 4d69701..796f384 100644
+index a14af2d..32fae37 100644
 --- a/src/pocketmine/resources/pocketmine.yml
 +++ b/src/pocketmine/resources/pocketmine.yml
 @@ -1,4 +1,4 @@
@@ -51,7 +51,7 @@ index 4d69701..796f384 100644
 - per-tick: 4
 + per-tick: 1
   #Compression level used when sending chunks. Higher = more CPU, less bandwidth usage
-  compression-level: 7
+  compression-level: 8
   #Amount of chunks loaded around a player by the server, min. 56 as MC: PE 0.9.5
 @@ -75,11 +75,11 @@ auto-report:
   enabled: true
