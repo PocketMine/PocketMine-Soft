@@ -1,23 +1,23 @@
-From 16e7b6f0ffa0bf77a1136699cd3308c0c943a0cf Mon Sep 17 00:00:00 2001
+From 6045e94de1e831bdb1191b974fe192062c3ab4c7 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sun, 5 Oct 2014 16:41:04 +0200
 Subject: [PATCH] Added check-movement property
 
 
 diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
-index 78e7754..fa3aea6 100644
+index 8cac01f..f01a24e 100644
 --- a/src/pocketmine/Player.php
 +++ b/src/pocketmine/Player.php
-@@ -175,6 +175,8 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
- 	private $spawnPosition = null;
- 	private $inAction = false;
+@@ -177,6 +177,8 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+ 
+ 	protected $inAirTicks = 0;
  
 +	private $checkMovement;
 +
  
  	private $needACK = [];
  
-@@ -417,6 +419,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -419,6 +421,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  		$this->setLevel($this->server->getDefaultLevel(), true);
  		$this->viewDistance = $this->server->getViewDistance();
  		$this->newPosition = new Vector3(0, 0, 0);
@@ -25,7 +25,7 @@ index 78e7754..fa3aea6 100644
  	}
  
  	/**
-@@ -1139,7 +1142,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -1145,7 +1148,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  
  			$diff = $diffX ** 2 + $diffY ** 2 + $diffZ ** 2;
  
