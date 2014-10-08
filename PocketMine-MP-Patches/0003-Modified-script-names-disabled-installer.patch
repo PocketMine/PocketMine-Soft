@@ -1,11 +1,11 @@
-From 0a04207de44a0ee1f5ba7ac274dd298ee5b268ab Mon Sep 17 00:00:00 2001
+From 6d589e3679dec6a3dd0642852874fbeb4708dc48 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Fri, 22 Aug 2014 19:38:07 +0200
 Subject: [PATCH] Modified script names, disabled installer
 
 
 diff --git a/src/pocketmine/PocketMine.php b/src/pocketmine/PocketMine.php
-index 7ed5cbb..7495274 100644
+index 447f801..c80b171 100644
 --- a/src/pocketmine/PocketMine.php
 +++ b/src/pocketmine/PocketMine.php
 @@ -69,7 +69,6 @@ namespace pocketmine {
@@ -13,10 +13,10 @@ index 7ed5cbb..7495274 100644
  	use pocketmine\utils\MainLogger;
  	use pocketmine\utils\Utils;
 -	use pocketmine\wizard\Installer;
- 	use raklib\RakLib;
  
  	const VERSION = "Alpha_1.4dev";
-@@ -385,7 +384,7 @@ namespace pocketmine {
+ 	const API_VERSION = "1.6.0";
+@@ -384,7 +383,7 @@ namespace pocketmine {
  	}
  
  	if(php_sapi_name() !== "cli"){
@@ -25,7 +25,7 @@ index 7ed5cbb..7495274 100644
  		++$errors;
  	}
  
-@@ -459,12 +458,8 @@ namespace pocketmine {
+@@ -458,12 +457,8 @@ namespace pocketmine {
  	@define("INT32_MASK", is_int(0xffffffff) ? 0xffffffff : -1);
  	@ini_set("opcache.mmap_base", bin2hex(Utils::getRandomBytes(8, false))); //Fix OPCache address errors
  
