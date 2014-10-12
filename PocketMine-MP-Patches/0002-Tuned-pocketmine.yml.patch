@@ -1,22 +1,9 @@
-From 07cf5f8a9fbecd5c04261683fa602d56e4a44e75 Mon Sep 17 00:00:00 2001
+From 23ada5bb3af42aee457bfd7eeea1fa15857300ae Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Fri, 22 Aug 2014 18:25:12 +0200
 Subject: [PATCH] Tuned pocketmine.yml
 
 
-diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
-index 1d8755b..ba73987 100644
---- a/src/pocketmine/Player.php
-+++ b/src/pocketmine/Player.php
-@@ -608,7 +608,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
- 			$this->chunkLoadTask->setNextRun($this->chunkLoadTask->getNextRun() + 30);
- 		}else{
- 			$count = 0;
--			$limit = (int) $this->server->getProperty("chunk-sending.per-tick", 4);
-+			$limit = (int) $this->server->getProperty("chunk-sending.per-tick", 1);
- 			foreach($this->loadQueue as $index => $distance){
- 				if($count >= $limit){
- 					break;
 diff --git a/src/pocketmine/resources/pocketmine.yml b/src/pocketmine/resources/pocketmine.yml
 index a14af2d..32fae37 100644
 --- a/src/pocketmine/resources/pocketmine.yml
@@ -68,7 +55,7 @@ index a14af2d..32fae37 100644
    warn-console: true
    warn-ops: true
 diff --git a/src/pocketmine/scheduler/ServerScheduler.php b/src/pocketmine/scheduler/ServerScheduler.php
-index 696ac2a..72e8631 100644
+index f64d39f..77525c5 100644
 --- a/src/pocketmine/scheduler/ServerScheduler.php
 +++ b/src/pocketmine/scheduler/ServerScheduler.php
 @@ -29,7 +29,7 @@ use pocketmine\Server;

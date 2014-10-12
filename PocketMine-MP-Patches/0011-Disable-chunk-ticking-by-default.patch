@@ -1,14 +1,14 @@
-From 1de7386ee90c6fc14519adbefe698583474cf68d Mon Sep 17 00:00:00 2001
+From 6f82076c2eedf01367a59cd1111b05d9a1923275 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Tue, 26 Aug 2014 17:44:20 +0200
 Subject: [PATCH] Disable chunk ticking by default
 
 
 diff --git a/src/pocketmine/level/Level.php b/src/pocketmine/level/Level.php
-index 7922f91..55200bf 100644
+index e0bf52d..67614de 100644
 --- a/src/pocketmine/level/Level.php
 +++ b/src/pocketmine/level/Level.php
-@@ -259,7 +259,7 @@ class Level implements ChunkManager, Metadatable{
+@@ -261,7 +261,7 @@ class Level implements ChunkManager, Metadatable{
  		$this->time = (int) $this->provider->getTime();
  
  		$this->chunkTickRadius = min($this->server->getViewDistance(), max(1, (int) $this->server->getProperty("chunk-ticking.tick-radius", 3)));
