@@ -1,0 +1,59 @@
+From 8250ca72f136daddfa5e11847708a12700e35208 Mon Sep 17 00:00:00 2001
+From: Shoghi Cervantes <shoghicp@gmail.com>
+Date: Mon, 13 Oct 2014 23:23:00 +0200
+Subject: [PATCH] Added check-block-collision property
+
+
+diff --git a/src/pocketmine/entity/Entity.php b/src/pocketmine/entity/Entity.php
+index 7476b14..43aa611 100644
+--- a/src/pocketmine/entity/Entity.php
++++ b/src/pocketmine/entity/Entity.php
+@@ -66,6 +66,9 @@ abstract class Entity extends Position implements Metadatable{
+ 
+ 	public static $entityCount = 1;
+ 
++	protected $checkBlockCollisionCount = 0;
++	protected $checkBlockCollisionTicks = 1;
++
+ 	/**
+ 	 * @var Player[]
+ 	 */
+@@ -219,6 +222,8 @@ abstract class Entity extends Position implements Metadatable{
+ 		$this->lastUpdate = $this->spawnTime = microtime(true);
+ 		$this->server->getPluginManager()->callEvent(new EntitySpawnEvent($this));
+ 
++		$this->checkBlockCollisionTicks = (int) $this->server->getAdvancedProperty("main.check-block-collision", 1);
++
+ 		$this->scheduleUpdate();
+ 
+ 	}
+@@ -482,7 +487,10 @@ abstract class Entity extends Position implements Metadatable{
+ 
+ 		$hasUpdate = false;
+ 
+-		$this->checkBlockCollision();
++		if($this->checkBlockCollisionTicks > 0 and ++$this->checkBlockCollisionCount >= $this->checkBlockCollisionTicks){
++			$this->checkBlockCollisionCount = 0;
++			$this->checkBlockCollision();
++		}
+ 
+ 		if($this->y < 0 and $this->dead !== true){
+ 			$this->server->getPluginManager()->callEvent($ev = new EntityDamageEvent($this, EntityDamageEvent::CAUSE_VOID, 10));
+diff --git a/src/pocketmine/resources/pocketmine-soft.yml b/src/pocketmine/resources/pocketmine-soft.yml
+index 8a1d394..136207b 100644
+--- a/src/pocketmine/resources/pocketmine-soft.yml
++++ b/src/pocketmine/resources/pocketmine-soft.yml
+@@ -28,6 +28,10 @@ main:
+  #Creative mode is not affected
+  check-movement: true
+ 
++ #Do entity block collision checks. This includes damage by blocks, falling on water, climbing blocks
++ #Value is in ticks, so 1 = check each tick. If 0, disable collision checks
++ check-block-collision: 1
++
+  #Enables RakLib client/server port checking
+  #Proxied servers might have to disable this option
+  session-port-checking: true
+-- 
+1.9.1
+
