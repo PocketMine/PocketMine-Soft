@@ -1,14 +1,14 @@
-From 8250ca72f136daddfa5e11847708a12700e35208 Mon Sep 17 00:00:00 2001
+From eef854767dc2150d2722e9ee9fc52e2c9cbbe855 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Mon, 13 Oct 2014 23:23:00 +0200
 Subject: [PATCH] Added check-block-collision property
 
 
 diff --git a/src/pocketmine/entity/Entity.php b/src/pocketmine/entity/Entity.php
-index 7476b14..43aa611 100644
+index a2ca413..27268c1 100644
 --- a/src/pocketmine/entity/Entity.php
 +++ b/src/pocketmine/entity/Entity.php
-@@ -66,6 +66,9 @@ abstract class Entity extends Position implements Metadatable{
+@@ -67,6 +67,9 @@ abstract class Entity extends Location implements Metadatable{
  
  	public static $entityCount = 1;
  
@@ -18,8 +18,8 @@ index 7476b14..43aa611 100644
  	/**
  	 * @var Player[]
  	 */
-@@ -219,6 +222,8 @@ abstract class Entity extends Position implements Metadatable{
- 		$this->lastUpdate = $this->spawnTime = microtime(true);
+@@ -216,6 +219,8 @@ abstract class Entity extends Location implements Metadatable{
+ 		$this->lastUpdate = $this->server->getTick();
  		$this->server->getPluginManager()->callEvent(new EntitySpawnEvent($this));
  
 +		$this->checkBlockCollisionTicks = (int) $this->server->getAdvancedProperty("main.check-block-collision", 1);
@@ -27,7 +27,7 @@ index 7476b14..43aa611 100644
  		$this->scheduleUpdate();
  
  	}
-@@ -482,7 +487,10 @@ abstract class Entity extends Position implements Metadatable{
+@@ -479,7 +484,10 @@ abstract class Entity extends Location implements Metadatable{
  
  		$hasUpdate = false;
  

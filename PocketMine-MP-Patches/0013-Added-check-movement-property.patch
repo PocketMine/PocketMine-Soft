@@ -1,14 +1,14 @@
-From d729597c8eab0c3ceaffa006964977030ce5b466 Mon Sep 17 00:00:00 2001
+From e61312185477f8f9a7b72a1eecbb630a307bf0ae Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sun, 5 Oct 2014 16:41:04 +0200
 Subject: [PATCH] Added check-movement property
 
 
 diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
-index 097f3ba..97e7354 100644
+index efce833..016ea87 100644
 --- a/src/pocketmine/Player.php
 +++ b/src/pocketmine/Player.php
-@@ -183,6 +183,8 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -185,6 +185,8 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  
  	protected $inAirTicks = 0;
  
@@ -17,7 +17,7 @@ index 097f3ba..97e7354 100644
  
  	private $needACK = [];
  
-@@ -425,6 +427,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -427,6 +429,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  		$this->setLevel($this->server->getDefaultLevel(), true);
  		$this->viewDistance = $this->server->getViewDistance();
  		$this->newPosition = new Vector3(0, 0, 0);
