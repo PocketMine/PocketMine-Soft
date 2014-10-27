@@ -1,14 +1,14 @@
-From c34e5da9859df462f8e1fb74464b152f6f56c89f Mon Sep 17 00:00:00 2001
+From cbe7e11d407f22f3ddb1a279017554d759036678 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Mon, 1 Sep 2014 18:32:00 +0200
 Subject: [PATCH] Fixed RakLib interface start
 
 
 diff --git a/src/pocketmine/network/RakLibInterface.php b/src/pocketmine/network/RakLibInterface.php
-index 70a2aa4..39c9235 100644
+index 5f4b3b1..193f2ae 100644
 --- a/src/pocketmine/network/RakLibInterface.php
 +++ b/src/pocketmine/network/RakLibInterface.php
-@@ -112,8 +112,7 @@ class RakLibInterface implements ServerInstance, SourceInterface{
+@@ -117,8 +117,7 @@ class RakLibInterface implements ServerInstance, SourceInterface{
  		$server = new RakLibServer($this->internalThreaded, $this->externalThreaded, $this->server->getLogger(), $this->server->getLoader(), $this->server->getPort(), $this->server->getIp() === "" ? "0.0.0.0" : $this->server->getIp());
  		$this->interface = new ServerHandler($server, $this);
  		$this->setName($this->server->getMotd());
@@ -18,7 +18,7 @@ index 70a2aa4..39c9235 100644
  			$this->setPortCheck(false);
  		}
  
-@@ -383,4 +382,4 @@ class RakLibInterface implements ServerInstance, SourceInterface{
+@@ -329,4 +328,4 @@ class RakLibInterface implements ServerInstance, SourceInterface{
  
  		return $data;
  	}

@@ -1,14 +1,14 @@
-From 3790bb17ac8dd72caeba58c5302f7bb282e10f72 Mon Sep 17 00:00:00 2001
+From 0336f5dabbfaea66114d8b02432a56b355bc349d Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 00:59:36 +0200
 Subject: [PATCH] Added filter-creative-items setting
 
 
 diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
-index 06a9843..efce833 100644
+index 4a0f422..8f3e740 100644
 --- a/src/pocketmine/Player.php
 +++ b/src/pocketmine/Player.php
-@@ -1070,6 +1070,11 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -1043,6 +1043,11 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  	}
  
  	protected function getCreativeBlock(Item $item){

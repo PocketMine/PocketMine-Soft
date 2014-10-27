@@ -1,14 +1,14 @@
-From 975fd53cbdfffdb44b0cf47db90d26b13819b3ad Mon Sep 17 00:00:00 2001
+From 07c3d6545cf52dd4198e98268840e3cc630907e8 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sun, 24 Aug 2014 17:26:54 +0200
 Subject: [PATCH] Added RakLib port checking option
 
 
 diff --git a/src/pocketmine/network/RakLibInterface.php b/src/pocketmine/network/RakLibInterface.php
-index ac42cc5..70a2aa4 100644
+index c01c50a..5f4b3b1 100644
 --- a/src/pocketmine/network/RakLibInterface.php
 +++ b/src/pocketmine/network/RakLibInterface.php
-@@ -112,6 +112,11 @@ class RakLibInterface implements ServerInstance, SourceInterface{
+@@ -117,6 +117,11 @@ class RakLibInterface implements ServerInstance, SourceInterface{
  		$server = new RakLibServer($this->internalThreaded, $this->externalThreaded, $this->server->getLogger(), $this->server->getLoader(), $this->server->getPort(), $this->server->getIp() === "" ? "0.0.0.0" : $this->server->getIp());
  		$this->interface = new ServerHandler($server, $this);
  		$this->setName($this->server->getMotd());

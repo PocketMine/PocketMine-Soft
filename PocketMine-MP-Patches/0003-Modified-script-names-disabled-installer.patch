@@ -1,11 +1,11 @@
-From 6d589e3679dec6a3dd0642852874fbeb4708dc48 Mon Sep 17 00:00:00 2001
+From b6520e3bff25d19e2971ef30590f82d11603c031 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Fri, 22 Aug 2014 19:38:07 +0200
 Subject: [PATCH] Modified script names, disabled installer
 
 
 diff --git a/src/pocketmine/PocketMine.php b/src/pocketmine/PocketMine.php
-index 447f801..c80b171 100644
+index 046a4e5..9ffd852 100644
 --- a/src/pocketmine/PocketMine.php
 +++ b/src/pocketmine/PocketMine.php
 @@ -69,7 +69,6 @@ namespace pocketmine {
@@ -15,8 +15,8 @@ index 447f801..c80b171 100644
 -	use pocketmine\wizard\Installer;
  
  	const VERSION = "Alpha_1.4dev";
- 	const API_VERSION = "1.6.0";
-@@ -384,7 +383,7 @@ namespace pocketmine {
+ 	const API_VERSION = "1.7.0";
+@@ -385,7 +384,7 @@ namespace pocketmine {
  	}
  
  	if(php_sapi_name() !== "cli"){
@@ -25,7 +25,7 @@ index 447f801..c80b171 100644
  		++$errors;
  	}
  
-@@ -458,12 +457,8 @@ namespace pocketmine {
+@@ -459,12 +458,8 @@ namespace pocketmine {
  	@define("INT32_MASK", is_int(0xffffffff) ? 0xffffffff : -1);
  	@ini_set("opcache.mmap_base", bin2hex(Utils::getRandomBytes(8, false))); //Fix OPCache address errors
  
@@ -55,7 +55,7 @@ index a362b7c..d777993 100644
  	if exist src\pocketmine\PocketMine.php (
  		set POCKETMINE_FILE=src\pocketmine\PocketMine.php
 diff --git a/start.sh b/start.sh
-index 6a0c7b4..f6ae4d1 100755
+index 4c85295..9680ae0 100755
 --- a/start.sh
 +++ b/start.sh
 @@ -33,12 +33,12 @@ if [ "$PHP_BINARY" == "" ]; then
