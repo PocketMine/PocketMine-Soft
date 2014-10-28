@@ -1,11 +1,11 @@
-From 060a1fa74e89e25f1cbdd1d5a9a90ca50896216b Mon Sep 17 00:00:00 2001
+From fd51e57da00014f097bab4f9ea4abd93c5822815 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sun, 5 Oct 2014 16:41:04 +0200
 Subject: [PATCH] Added check-movement property
 
 
 diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
-index 8f3e740..c4f68fe 100644
+index 618426e..4609113 100644
 --- a/src/pocketmine/Player.php
 +++ b/src/pocketmine/Player.php
 @@ -183,6 +183,8 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
@@ -25,7 +25,7 @@ index 8f3e740..c4f68fe 100644
  	}
  
  	/**
-@@ -1094,7 +1097,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -1093,7 +1096,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  
  			$diff = $diffX ** 2 + $diffY ** 2 + $diffZ ** 2;
  
