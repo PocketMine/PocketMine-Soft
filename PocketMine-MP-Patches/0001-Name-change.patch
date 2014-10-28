@@ -1,14 +1,14 @@
-From d6ebb31ce96c11cb673868f16d5db6b8154beddf Mon Sep 17 00:00:00 2001
+From 067fb29c8c5e026b25c68193f42408fb548c6bfa Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Fri, 22 Aug 2014 18:20:05 +0200
 Subject: [PATCH] Name change
 
 
 diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
-index 8ae5dde..f86979b 100644
+index 049f4ac..a8bf1c8 100644
 --- a/src/pocketmine/Server.php
 +++ b/src/pocketmine/Server.php
-@@ -209,7 +209,7 @@ class Server{
+@@ -222,7 +222,7 @@ class Server{
  	 * @return string
  	 */
  	public function getName(){
