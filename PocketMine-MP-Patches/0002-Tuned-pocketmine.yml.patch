@@ -1,4 +1,4 @@
-From 23ada5bb3af42aee457bfd7eeea1fa15857300ae Mon Sep 17 00:00:00 2001
+From 5a0d297ea7023806109c2fa1a60add8612a886fc Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Fri, 22 Aug 2014 18:25:12 +0200
 Subject: [PATCH] Tuned pocketmine.yml
@@ -55,10 +55,10 @@ index a14af2d..32fae37 100644
    warn-console: true
    warn-ops: true
 diff --git a/src/pocketmine/scheduler/ServerScheduler.php b/src/pocketmine/scheduler/ServerScheduler.php
-index f64d39f..77525c5 100644
+index 835e647..db2c6f3 100644
 --- a/src/pocketmine/scheduler/ServerScheduler.php
 +++ b/src/pocketmine/scheduler/ServerScheduler.php
-@@ -29,7 +29,7 @@ use pocketmine\Server;
+@@ -30,7 +30,7 @@ use pocketmine\utils\PluginException;
  use pocketmine\utils\ReversePriorityQueue;
  
  class ServerScheduler{
