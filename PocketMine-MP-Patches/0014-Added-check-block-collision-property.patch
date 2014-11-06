@@ -1,16 +1,16 @@
-From 8212b28d49264eb5fd54d423d14f8dec6aa11968 Mon Sep 17 00:00:00 2001
+From 59ef628f5fdc4a128e0cc2513936b43b1c96f940 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Mon, 13 Oct 2014 23:23:00 +0200
 Subject: [PATCH] Added check-block-collision property
 
 
 diff --git a/src/pocketmine/entity/Entity.php b/src/pocketmine/entity/Entity.php
-index 645ec0c..51994de 100644
+index 7df739a..af8dc6c 100644
 --- a/src/pocketmine/entity/Entity.php
 +++ b/src/pocketmine/entity/Entity.php
-@@ -70,6 +70,9 @@ abstract class Entity extends Location implements Metadatable{
- 	/** @var Entity[] */
+@@ -72,6 +72,9 @@ abstract class Entity extends Location implements Metadatable{
  	private static $knownEntities = [];
+ 	private static $shortNames = [];
  
 +	protected $checkBlockCollisionCount = 0;
 +	protected $checkBlockCollisionTicks = 1;
@@ -18,16 +18,16 @@ index 645ec0c..51994de 100644
  	/**
  	 * @var Player[]
  	 */
-@@ -219,6 +222,8 @@ abstract class Entity extends Location implements Metadatable{
+@@ -224,6 +227,8 @@ abstract class Entity extends Location implements Metadatable{
  		$this->lastUpdate = $this->server->getTick();
- 		$this->server->getPluginManager()->callEvent(EntitySpawnEvent::createEvent($this));
+ 		$this->server->getPluginManager()->callEvent(new EntitySpawnEvent($this));
  
 +		$this->checkBlockCollisionTicks = (int) $this->server->getAdvancedProperty("main.check-block-collision", 1);
 +
  		$this->scheduleUpdate();
  
  	}
-@@ -519,7 +524,10 @@ abstract class Entity extends Location implements Metadatable{
+@@ -538,7 +543,10 @@ abstract class Entity extends Location implements Metadatable{
  
  		$hasUpdate = false;
  
@@ -38,7 +38,7 @@ index 645ec0c..51994de 100644
 +		}
  
  		if($this->y < 0 and $this->dead !== true){
- 			$ev = EntityDamageEvent::createEvent($this, EntityDamageEvent::CAUSE_VOID, 10);
+ 			$ev = new EntityDamageEvent($this, EntityDamageEvent::CAUSE_VOID, 10);
 diff --git a/src/pocketmine/resources/pocketmine-soft.yml b/src/pocketmine/resources/pocketmine-soft.yml
 index 8a1d394..136207b 100644
 --- a/src/pocketmine/resources/pocketmine-soft.yml
