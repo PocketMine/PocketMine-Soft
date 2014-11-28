@@ -1,11 +1,11 @@
-From 0e83d9332bf55e99ef09fd0cda0594b85d581512 Mon Sep 17 00:00:00 2001
+From feb49c4cacdef48121f006d1e5fc1637acfa31e6 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Fri, 22 Aug 2014 19:38:07 +0200
 Subject: [PATCH] Modified script names, disabled installer
 
 
 diff --git a/src/pocketmine/PocketMine.php b/src/pocketmine/PocketMine.php
-index e00d447..12b663a 100644
+index 1a6229f..9a57f59 100644
 --- a/src/pocketmine/PocketMine.php
 +++ b/src/pocketmine/PocketMine.php
 @@ -68,7 +68,6 @@ namespace pocketmine {
@@ -15,8 +15,8 @@ index e00d447..12b663a 100644
 -	use pocketmine\wizard\Installer;
  
  	const VERSION = "Alpha_1.4dev";
- 	const API_VERSION = "1.7.0";
-@@ -339,7 +338,7 @@ namespace pocketmine {
+ 	const API_VERSION = "1.8.0";
+@@ -354,7 +353,7 @@ namespace pocketmine {
  	}
  
  	if(php_sapi_name() !== "cli"){
@@ -25,7 +25,7 @@ index e00d447..12b663a 100644
  		++$errors;
  	}
  
-@@ -413,12 +412,8 @@ namespace pocketmine {
+@@ -428,12 +427,8 @@ namespace pocketmine {
  	@define("INT32_MASK", is_int(0xffffffff) ? 0xffffffff : -1);
  	@ini_set("opcache.mmap_base", bin2hex(Utils::getRandomBytes(8, false))); //Fix OPCache address errors
  
@@ -40,7 +40,7 @@ index e00d447..12b663a 100644
  
  	ThreadManager::init();
 diff --git a/start.cmd b/start.cmd
-index a362b7c..d777993 100644
+index 2804a04..9ac0a8d 100644
 --- a/start.cmd
 +++ b/start.cmd
 @@ -7,8 +7,8 @@ if exist bin\php\php.exe (
@@ -75,5 +75,5 @@ index 4c85295..9680ae0 100755
  	fi
  fi
 -- 
-1.9.1
+2.1.0
 

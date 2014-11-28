@@ -1,14 +1,14 @@
-From 8ab914ce39864fc010780eb045f7d6f82c6f923b Mon Sep 17 00:00:00 2001
+From 55f9be1cc5928e537485c384ad11e162f7880365 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sun, 5 Oct 2014 16:41:04 +0200
 Subject: [PATCH] Added check-movement property
 
 
 diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
-index 9607c04..599a878 100644
+index c311ada..815312e 100644
 --- a/src/pocketmine/Player.php
 +++ b/src/pocketmine/Player.php
-@@ -186,6 +186,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -192,6 +192,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  
  	protected $inAirTicks = 0;
  
@@ -16,7 +16,7 @@ index 9607c04..599a878 100644
  
  	private $needACK = [];
  
-@@ -428,6 +429,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -434,6 +435,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  		$this->setLevel($this->server->getDefaultLevel(), true);
  		$this->viewDistance = $this->server->getViewDistance();
  		$this->newPosition = new Vector3(0, 0, 0);
@@ -24,7 +24,7 @@ index 9607c04..599a878 100644
  		$this->boundingBox = new AxisAlignedBB(0, 0, 0, 0, 0, 0);
  	}
  
-@@ -1086,10 +1088,10 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -1115,10 +1117,10 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  			$diff = $diffX ** 2 + $diffY ** 2 + $diffZ ** 2;
  
  			if(!$revert and !$this->isSleeping() and $this->isSurvival()){
@@ -53,5 +53,5 @@ index 7efb1f4..8a1d394 100644
   #Proxied servers might have to disable this option
   session-port-checking: true
 -- 
-1.9.1
+2.1.0
 

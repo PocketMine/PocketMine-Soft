@@ -1,14 +1,14 @@
-From 59ef628f5fdc4a128e0cc2513936b43b1c96f940 Mon Sep 17 00:00:00 2001
+From 008faa4e54db57e88e3b7401773a8fdd98f53019 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Mon, 13 Oct 2014 23:23:00 +0200
 Subject: [PATCH] Added check-block-collision property
 
 
 diff --git a/src/pocketmine/entity/Entity.php b/src/pocketmine/entity/Entity.php
-index 7df739a..af8dc6c 100644
+index 810f1c2..20033d5 100644
 --- a/src/pocketmine/entity/Entity.php
 +++ b/src/pocketmine/entity/Entity.php
-@@ -72,6 +72,9 @@ abstract class Entity extends Location implements Metadatable{
+@@ -70,6 +70,9 @@ abstract class Entity extends Location implements Metadatable{
  	private static $knownEntities = [];
  	private static $shortNames = [];
  
@@ -18,7 +18,7 @@ index 7df739a..af8dc6c 100644
  	/**
  	 * @var Player[]
  	 */
-@@ -224,6 +227,8 @@ abstract class Entity extends Location implements Metadatable{
+@@ -223,6 +226,8 @@ abstract class Entity extends Location implements Metadatable{
  		$this->lastUpdate = $this->server->getTick();
  		$this->server->getPluginManager()->callEvent(new EntitySpawnEvent($this));
  
@@ -27,7 +27,7 @@ index 7df739a..af8dc6c 100644
  		$this->scheduleUpdate();
  
  	}
-@@ -538,7 +543,10 @@ abstract class Entity extends Location implements Metadatable{
+@@ -537,7 +542,10 @@ abstract class Entity extends Location implements Metadatable{
  
  		$hasUpdate = false;
  
@@ -55,5 +55,5 @@ index 8a1d394..136207b 100644
   #Proxied servers might have to disable this option
   session-port-checking: true
 -- 
-1.9.1
+2.1.0
 
