@@ -26,7 +26,7 @@ index 7dfa9da..7efb1f4 100644
 +++ b/src/pocketmine/resources/pocketmine-soft.yml
 @@ -22,4 +22,8 @@ main:
   
-  #Shuffle the player list to prevet players from 'gaming' the server, getting high priority on the tick list.
+  #Shuffle the player list to prevent players from 'gaming' the server, getting high priority on the tick list.
   #Value is in ticks, so 20 = shuffle each second
 - player-shuffle: 0
 \ No newline at end of file
