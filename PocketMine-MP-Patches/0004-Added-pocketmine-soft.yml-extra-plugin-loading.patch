@@ -1,14 +1,14 @@
-From 3a52c7c5a5452312f22d58f3ef93542fe8ea6614 Mon Sep 17 00:00:00 2001
+From cf967860b9df6d47fbf5789e72d01f8b473b85f5 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 00:31:29 +0200
 Subject: [PATCH] Added pocketmine-soft.yml, extra plugin loading
 
 
 diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
-index 309aaa4..357507b 100644
+index 98e6409..0f7e868 100644
 --- a/src/pocketmine/Server.php
 +++ b/src/pocketmine/Server.php
-@@ -209,6 +209,9 @@ class Server{
+@@ -210,6 +210,9 @@ class Server{
  	/** @var Config */
  	private $config;
  
@@ -18,7 +18,7 @@ index 309aaa4..357507b 100644
  	/** @var Player[] */
  	private $players = [];
  
-@@ -1217,6 +1220,35 @@ class Server{
+@@ -1234,6 +1237,35 @@ class Server{
  		return $this->properties->exists($variable) ? $this->properties->get($variable) : $defaultValue;
  	}
  
@@ -54,7 +54,7 @@ index 309aaa4..357507b 100644
  	/**
  	 * @param string $variable
  	 * @param mixed  $defaultValue
-@@ -1485,6 +1517,13 @@ class Server{
+@@ -1487,6 +1519,13 @@ class Server{
  		$version = new VersionString($this->getPocketMineVersion());
  		$this->logger->info("Starting Minecraft: PE server version " . TextFormat::AQUA . $this->getVersion());
  
@@ -68,7 +68,7 @@ index 309aaa4..357507b 100644
  		$this->logger->info("Loading pocketmine.yml...");
  		if(!file_exists($this->dataPath . "pocketmine.yml")){
  			$content = file_get_contents($this->filePath . "src/pocketmine/resources/pocketmine.yml");
-@@ -1595,7 +1634,29 @@ class Server{
+@@ -1597,7 +1636,29 @@ class Server{
  		set_exception_handler([$this, "exceptionHandler"]);
  		register_shutdown_function([$this, "crashDump"]);
  

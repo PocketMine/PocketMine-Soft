@@ -1,11 +1,11 @@
-From 9d6a858466ceee5073f0f49aa1f9e81ee43a5853 Mon Sep 17 00:00:00 2001
+From 7887862940cad25ec3d27aca13c25fcbc1751093 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Fri, 22 Aug 2014 18:25:12 +0200
 Subject: [PATCH] Tuned pocketmine.yml
 
 
 diff --git a/src/pocketmine/resources/pocketmine.yml b/src/pocketmine/resources/pocketmine.yml
-index a14af2d..32fae37 100644
+index 9c48712..84a55f9 100644
 --- a/src/pocketmine/resources/pocketmine.yml
 +++ b/src/pocketmine/resources/pocketmine.yml
 @@ -1,4 +1,4 @@
@@ -39,8 +39,8 @@ index a14af2d..32fae37 100644
 + per-tick: 1
   #Compression level used when sending chunks. Higher = more CPU, less bandwidth usage
   compression-level: 8
-  #Amount of chunks loaded around a player by the server, min. 56 as MC: PE 0.9.5
-@@ -75,11 +75,11 @@ auto-report:
+  #Amount of chunks sent around each player
+@@ -74,11 +74,11 @@ auto-report:
   enabled: true
   send-code: true
   send-settings: true
@@ -55,7 +55,7 @@ index a14af2d..32fae37 100644
    warn-console: true
    warn-ops: true
 diff --git a/src/pocketmine/scheduler/ServerScheduler.php b/src/pocketmine/scheduler/ServerScheduler.php
-index 7b3ce1b..114d923 100644
+index 8e3611e..98445f8 100644
 --- a/src/pocketmine/scheduler/ServerScheduler.php
 +++ b/src/pocketmine/scheduler/ServerScheduler.php
 @@ -31,7 +31,7 @@ use pocketmine\utils\PluginException;

@@ -1,4 +1,4 @@
-From 74ff4f705312dbbb5d7ebd25bd1c601d22a613cf Mon Sep 17 00:00:00 2001
+From 8ed3ff45dc5e43671f6519a379d223b4e3a582cb Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 00:56:33 +0200
 Subject: [PATCH] Added extra command message override
@@ -20,10 +20,10 @@ index 00000000..ae50745
 + BigBrother: "https://github.com/shoghicp/BigBrother/releases/download/v1.3.0-beta/BigBrother_v1.3.0-beta.phar"
 + #SimpleAuth: "/full/path/to/file/SimpleAuth.phar"
 diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
-index 357507b..ae7bcf2 100644
+index 0f7e868..d45366f 100644
 --- a/src/pocketmine/Server.php
 +++ b/src/pocketmine/Server.php
-@@ -1856,7 +1856,10 @@ class Server{
+@@ -1862,7 +1862,10 @@ class Server{
  		}
  
  		if($sender instanceof Player){

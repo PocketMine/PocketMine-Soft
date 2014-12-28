@@ -1,11 +1,11 @@
-From 008faa4e54db57e88e3b7401773a8fdd98f53019 Mon Sep 17 00:00:00 2001
+From e5353bc303717f73732bd84a68df886e416c458b Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Mon, 13 Oct 2014 23:23:00 +0200
 Subject: [PATCH] Added check-block-collision property
 
 
 diff --git a/src/pocketmine/entity/Entity.php b/src/pocketmine/entity/Entity.php
-index 810f1c2..20033d5 100644
+index d089ebe..e68ec47 100644
 --- a/src/pocketmine/entity/Entity.php
 +++ b/src/pocketmine/entity/Entity.php
 @@ -70,6 +70,9 @@ abstract class Entity extends Location implements Metadatable{
@@ -18,7 +18,7 @@ index 810f1c2..20033d5 100644
  	/**
  	 * @var Player[]
  	 */
-@@ -223,6 +226,8 @@ abstract class Entity extends Location implements Metadatable{
+@@ -224,6 +227,8 @@ abstract class Entity extends Location implements Metadatable{
  		$this->lastUpdate = $this->server->getTick();
  		$this->server->getPluginManager()->callEvent(new EntitySpawnEvent($this));
  
@@ -27,7 +27,7 @@ index 810f1c2..20033d5 100644
  		$this->scheduleUpdate();
  
  	}
-@@ -537,7 +542,10 @@ abstract class Entity extends Location implements Metadatable{
+@@ -539,7 +544,10 @@ abstract class Entity extends Location implements Metadatable{
  
  		$hasUpdate = false;
  
@@ -40,7 +40,7 @@ index 810f1c2..20033d5 100644
  		if($this->y < 0 and $this->dead !== true){
  			$ev = new EntityDamageEvent($this, EntityDamageEvent::CAUSE_VOID, 10);
 diff --git a/src/pocketmine/resources/pocketmine-soft.yml b/src/pocketmine/resources/pocketmine-soft.yml
-index 8a1d394..136207b 100644
+index bcacdea..d552658 100644
 --- a/src/pocketmine/resources/pocketmine-soft.yml
 +++ b/src/pocketmine/resources/pocketmine-soft.yml
 @@ -28,6 +28,10 @@ main:

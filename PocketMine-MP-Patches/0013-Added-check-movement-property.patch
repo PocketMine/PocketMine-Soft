@@ -1,11 +1,11 @@
-From 55f9be1cc5928e537485c384ad11e162f7880365 Mon Sep 17 00:00:00 2001
+From 5b73e7b901ee6497451f6cffcb50acd1ac78441d Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sun, 5 Oct 2014 16:41:04 +0200
 Subject: [PATCH] Added check-movement property
 
 
 diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
-index c311ada..815312e 100644
+index 1334c4a..119ed96 100644
 --- a/src/pocketmine/Player.php
 +++ b/src/pocketmine/Player.php
 @@ -192,6 +192,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
@@ -16,7 +16,7 @@ index c311ada..815312e 100644
  
  	private $needACK = [];
  
-@@ -434,6 +435,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -425,6 +426,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  		$this->setLevel($this->server->getDefaultLevel(), true);
  		$this->viewDistance = $this->server->getViewDistance();
  		$this->newPosition = new Vector3(0, 0, 0);
@@ -24,7 +24,7 @@ index c311ada..815312e 100644
  		$this->boundingBox = new AxisAlignedBB(0, 0, 0, 0, 0, 0);
  	}
  
-@@ -1115,10 +1117,10 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -1109,10 +1111,10 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  			$diff = $diffX ** 2 + $diffY ** 2 + $diffZ ** 2;
  
  			if(!$revert and !$this->isSleeping() and $this->isSurvival()){
@@ -38,7 +38,7 @@ index c311ada..815312e 100644
  					$this->y = $this->newPosition->y;
  					$this->z = $this->newPosition->z;
 diff --git a/src/pocketmine/resources/pocketmine-soft.yml b/src/pocketmine/resources/pocketmine-soft.yml
-index 7efb1f4..8a1d394 100644
+index 8c48027..bcacdea 100644
 --- a/src/pocketmine/resources/pocketmine-soft.yml
 +++ b/src/pocketmine/resources/pocketmine-soft.yml
 @@ -24,6 +24,10 @@ main:

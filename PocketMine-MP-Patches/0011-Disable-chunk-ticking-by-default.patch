@@ -1,35 +1,42 @@
-From f06444e300d60803f313efcdfa3e6024eab0cfb6 Mon Sep 17 00:00:00 2001
+From 57a108f65a00b2634297e71bfc3aab1adb577b33 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Tue, 26 Aug 2014 17:44:20 +0200
 Subject: [PATCH] Disable chunk ticking by default
 
 
 diff --git a/src/pocketmine/level/Level.php b/src/pocketmine/level/Level.php
-index 204e56f..b81506c 100644
+index 44997f1..d7f084b 100644
 --- a/src/pocketmine/level/Level.php
 +++ b/src/pocketmine/level/Level.php
-@@ -269,7 +269,7 @@ class Level implements ChunkManager, Metadatable{
+@@ -295,7 +295,7 @@ class Level implements ChunkManager, Metadatable{
  		$this->time = (int) $this->provider->getTime();
  
- 		$this->chunkTickRadius = min($this->server->getViewDistance(), max(1, (int) $this->server->getProperty("chunk-ticking.tick-radius", 3)));
--		$this->chunksPerTick = (int) $this->server->getProperty("chunk-ticking.per-tick", 80);
+ 		$this->chunkTickRadius = min($this->server->getViewDistance(), max(1, (int) $this->server->getProperty("chunk-ticking.tick-radius", 4)));
+-		$this->chunksPerTick = (int) $this->server->getProperty("chunk-ticking.per-tick", 260);
 +		$this->chunksPerTick = (int) $this->server->getProperty("chunk-ticking.per-tick", 0);
  		$this->chunkTickList = [];
  		$this->clearChunksOnTick = (bool) $this->server->getProperty("chunk-ticking.clear-tick-list", false);
  
 diff --git a/src/pocketmine/resources/pocketmine.yml b/src/pocketmine/resources/pocketmine.yml
-index 10c5fb0..f0cd2ae 100644
+index 8e285e5..8076683 100644
 --- a/src/pocketmine/resources/pocketmine.yml
 +++ b/src/pocketmine/resources/pocketmine.yml
-@@ -40,7 +40,7 @@ chunk-sending:
+@@ -39,7 +39,7 @@ chunk-sending:
  
  chunk-ticking:
   #Max amount of chunks processed each tick
-- per-tick: 80
+- per-tick: 260
 + per-tick: 0
   #Radius of chunks around a player to tick
-  tick-radius: 2
+  tick-radius: 4
   light-updates: false
+@@ -94,4 +94,4 @@ worlds:
+  #Example:
+  #world:
+  # seed: 404
+- # generator: FLAT:2;7,59x1,3x3,2;1;decoration(treecount=80 grasscount=45)
+\ No newline at end of file
++ # generator: FLAT:2;7,59x1,3x3,2;1;decoration(treecount=80 grasscount=45)
 -- 
 2.1.0
 

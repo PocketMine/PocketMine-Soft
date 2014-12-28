@@ -1,11 +1,11 @@
-From feb49c4cacdef48121f006d1e5fc1637acfa31e6 Mon Sep 17 00:00:00 2001
+From b1e9346ce5261ad9f922b2af941ddd10c74b26f7 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Fri, 22 Aug 2014 19:38:07 +0200
 Subject: [PATCH] Modified script names, disabled installer
 
 
 diff --git a/src/pocketmine/PocketMine.php b/src/pocketmine/PocketMine.php
-index 1a6229f..9a57f59 100644
+index e694ee2..1f54308 100644
 --- a/src/pocketmine/PocketMine.php
 +++ b/src/pocketmine/PocketMine.php
 @@ -68,7 +68,6 @@ namespace pocketmine {
@@ -15,7 +15,7 @@ index 1a6229f..9a57f59 100644
 -	use pocketmine\wizard\Installer;
  
  	const VERSION = "Alpha_1.4dev";
- 	const API_VERSION = "1.8.0";
+ 	const API_VERSION = "1.10.0";
 @@ -354,7 +353,7 @@ namespace pocketmine {
  	}
  
