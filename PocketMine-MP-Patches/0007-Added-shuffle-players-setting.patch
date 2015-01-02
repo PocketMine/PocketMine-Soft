@@ -1,14 +1,14 @@
-From c28532b1967a090112e781177c098a12c5be681d Mon Sep 17 00:00:00 2001
+From 2bdeae4476ae17855a2e998ff0cfa0da0bdaf1ae Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 01:06:28 +0200
 Subject: [PATCH] Added shuffle-players setting
 
 
 diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
-index 946b5d8..1b86e58 100644
+index 4747df8..c83229c 100644
 --- a/src/pocketmine/Server.php
 +++ b/src/pocketmine/Server.php
-@@ -1735,6 +1735,10 @@ class Server{
+@@ -1751,6 +1751,10 @@ class Server{
  
  		$this->enablePlugins(PluginLoadOrder::POSTWORLD);
  
@@ -19,7 +19,7 @@ index 946b5d8..1b86e58 100644
  		$this->start();
  	}
  
-@@ -2330,4 +2334,19 @@ class Server{
+@@ -2351,4 +2355,19 @@ class Server{
  		Tile::registerTile(Sign::class);
  	}
  

@@ -1,4 +1,4 @@
-From 32e8fade6df461c0d1237784327b61701a9df5b7 Mon Sep 17 00:00:00 2001
+From d76002d43ae182fc41b05d57481475610ab53b76 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 11:40:09 +0200
 Subject: [PATCH] Enabled debug commands by default
@@ -20,10 +20,10 @@ index ae50745..00000000
 - BigBrother: "https://github.com/shoghicp/BigBrother/releases/download/v1.3.0-beta/BigBrother_v1.3.0-beta.phar"
 - #SimpleAuth: "/full/path/to/file/SimpleAuth.phar"
 diff --git a/src/pocketmine/resources/pocketmine.yml b/src/pocketmine/resources/pocketmine.yml
-index 3915c6b..0c88986 100644
+index 0c9386d..1e1ae86 100644
 --- a/src/pocketmine/resources/pocketmine.yml
 +++ b/src/pocketmine/resources/pocketmine.yml
-@@ -21,7 +21,7 @@ debug:
+@@ -22,7 +22,7 @@ debug:
   #If > 1, it will show debug messages in the console
   level: 1
   #Enables /status
@@ -33,5 +33,5 @@ index 3915c6b..0c88986 100644
  level-settings:
   #The default format that levels will use when created
 -- 
-1.9.1
+2.1.0
 

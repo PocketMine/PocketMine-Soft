@@ -1,11 +1,11 @@
-From 57a108f65a00b2634297e71bfc3aab1adb577b33 Mon Sep 17 00:00:00 2001
+From 0ef4e5b6396a5b25631f9afb00398dd083d6bcc0 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Tue, 26 Aug 2014 17:44:20 +0200
 Subject: [PATCH] Disable chunk ticking by default
 
 
 diff --git a/src/pocketmine/level/Level.php b/src/pocketmine/level/Level.php
-index 44997f1..d7f084b 100644
+index 6cffa8d..2a7ed72 100644
 --- a/src/pocketmine/level/Level.php
 +++ b/src/pocketmine/level/Level.php
 @@ -295,7 +295,7 @@ class Level implements ChunkManager, Metadatable{
@@ -18,10 +18,10 @@ index 44997f1..d7f084b 100644
  		$this->clearChunksOnTick = (bool) $this->server->getProperty("chunk-ticking.clear-tick-list", false);
  
 diff --git a/src/pocketmine/resources/pocketmine.yml b/src/pocketmine/resources/pocketmine.yml
-index 8e285e5..8076683 100644
+index 1e1ae86..a1874a3 100644
 --- a/src/pocketmine/resources/pocketmine.yml
 +++ b/src/pocketmine/resources/pocketmine.yml
-@@ -39,7 +39,7 @@ chunk-sending:
+@@ -41,7 +41,7 @@ chunk-sending:
  
  chunk-ticking:
   #Max amount of chunks processed each tick
@@ -29,8 +29,8 @@ index 8e285e5..8076683 100644
 + per-tick: 0
   #Radius of chunks around a player to tick
   tick-radius: 4
-  light-updates: false
-@@ -94,4 +94,4 @@ worlds:
+  #NOTE: This is currently not implemented
+@@ -97,4 +97,4 @@ worlds:
   #Example:
   #world:
   # seed: 404

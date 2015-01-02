@@ -1,11 +1,11 @@
-From 7887862940cad25ec3d27aca13c25fcbc1751093 Mon Sep 17 00:00:00 2001
+From db9f728d386342d0e84ea28f462a0494da2b4f50 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Fri, 22 Aug 2014 18:25:12 +0200
 Subject: [PATCH] Tuned pocketmine.yml
 
 
 diff --git a/src/pocketmine/resources/pocketmine.yml b/src/pocketmine/resources/pocketmine.yml
-index 9c48712..84a55f9 100644
+index cee9d00..9edc9cb 100644
 --- a/src/pocketmine/resources/pocketmine.yml
 +++ b/src/pocketmine/resources/pocketmine.yml
 @@ -1,4 +1,4 @@
@@ -14,7 +14,7 @@ index 9c48712..84a55f9 100644
  # These settings are the ones that cannot be included in server.properties
  # Some of these settings are safe, others can break your server if modified incorrectly
  
-@@ -9,13 +9,13 @@ settings:
+@@ -9,8 +9,8 @@ settings:
   #Show a console message when a plugin uses deprecated API methods
   deprecated-verbose: true
   #Enable plugin and core profiling by default
@@ -25,13 +25,7 @@ index 9c48712..84a55f9 100644
   upnp-forwarding: false
   #Sends anonymous statistics to create usage reports
   send-usage: true
-  #Number of AsyncTask workers
-- async-workers: 4
-+ async-workers: 1
- 
- debug:
-  #If > 1, it will show debug messages in the console
-@@ -31,7 +31,7 @@ level-settings:
+@@ -33,7 +33,7 @@ level-settings:
  
  chunk-sending:
   #Amount of chunks sent to players per tick
@@ -40,7 +34,7 @@ index 9c48712..84a55f9 100644
   #Compression level used when sending chunks. Higher = more CPU, less bandwidth usage
   compression-level: 8
   #Amount of chunks sent around each player
-@@ -74,11 +74,11 @@ auto-report:
+@@ -77,11 +77,11 @@ auto-report:
   enabled: true
   send-code: true
   send-settings: true
@@ -54,19 +48,6 @@ index 9c48712..84a55f9 100644
   on-update:
    warn-console: true
    warn-ops: true
-diff --git a/src/pocketmine/scheduler/ServerScheduler.php b/src/pocketmine/scheduler/ServerScheduler.php
-index 8e3611e..98445f8 100644
---- a/src/pocketmine/scheduler/ServerScheduler.php
-+++ b/src/pocketmine/scheduler/ServerScheduler.php
-@@ -31,7 +31,7 @@ use pocketmine\utils\PluginException;
- use pocketmine\utils\ReversePriorityQueue;
- 
- class ServerScheduler{
--	public static $WORKERS = 4;
-+	public static $WORKERS = 1;
- 	/**
- 	 * @var ReversePriorityQueue<Task>
- 	 */
 -- 
 2.1.0
 

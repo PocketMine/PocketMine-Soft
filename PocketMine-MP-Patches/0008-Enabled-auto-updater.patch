@@ -1,11 +1,11 @@
-From 0b09637e43540afd57f645677a50a7f67faedb16 Mon Sep 17 00:00:00 2001
+From e36d793070dd37ce704f6982bc7d98b33fdde514 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 01:30:53 +0200
 Subject: [PATCH] Enabled auto-updater
 
 
 diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
-index 2ecb878..17394b4 100644
+index c83229c..38a8347 100644
 --- a/src/pocketmine/Server.php
 +++ b/src/pocketmine/Server.php
 @@ -1529,9 +1529,6 @@ class Server{
@@ -19,10 +19,10 @@ index 2ecb878..17394b4 100644
  		}
  		$this->config = new Config($this->dataPath . "pocketmine.yml", Config::YAML, []);
 diff --git a/src/pocketmine/resources/pocketmine.yml b/src/pocketmine/resources/pocketmine.yml
-index 84a55f9..6c7cd04 100644
+index 9edc9cb..0c9386d 100644
 --- a/src/pocketmine/resources/pocketmine.yml
 +++ b/src/pocketmine/resources/pocketmine.yml
-@@ -78,14 +78,10 @@ auto-report:
+@@ -81,14 +81,10 @@ auto-report:
   host: crash.pocketmine.net
  
  auto-updater:
