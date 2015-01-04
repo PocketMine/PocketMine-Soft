@@ -8,14 +8,12 @@ diff --git a/src/pocketmine/PocketMine.php b/src/pocketmine/PocketMine.php
 index 9a5188e..bf724aa 100644
 --- a/src/pocketmine/PocketMine.php
 +++ b/src/pocketmine/PocketMine.php
-@@ -68,7 +68,6 @@ namespace pocketmine {
+@@ -68,5 +68,4 @@ namespace pocketmine {
  	use pocketmine\utils\Binary;
  	use pocketmine\utils\MainLogger;
  	use pocketmine\utils\Utils;
 -	use pocketmine\wizard\Installer;
  
- 	const VERSION = "1.4.1dev";
- 	const API_VERSION = "1.10.0";
 @@ -356,7 +355,7 @@ namespace pocketmine {
  	}
  
@@ -33,7 +31,7 @@ index 9a5188e..bf724aa 100644
 -		new Installer();
 -	}
 -
- 	if(substr(__FILE__, 0, 7) !== "phar://"){
+ 	if(\Phar::running(true) === ""){
 -		$logger->warning("Non-packaged PocketMine-MP installation detected, do not use on production.");
 +		$logger->warning("Non-packaged PocketMine-Soft installation detected, do not use on production.");
  	}
