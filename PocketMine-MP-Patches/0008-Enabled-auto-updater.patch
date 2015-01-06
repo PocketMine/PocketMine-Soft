@@ -50,7 +50,7 @@ index dbb85b9..0928c35 100644
 -				$version = new VersionString();
 -				if(!$version->isDev() and $this->getChannel() !== "stable"){
 -					$this->showChannelSuggestionStable();
--				}elseif($this->getChannel() === "stable"){
+-				}elseif($version->isDev() and $this->getChannel() === "stable"){
 -					$this->showChannelSuggestionBeta();
 -				}
  			}
