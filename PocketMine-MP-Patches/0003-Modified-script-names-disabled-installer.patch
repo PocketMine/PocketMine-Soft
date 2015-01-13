@@ -1,19 +1,21 @@
-From 73328e7d0fca7b668e3620a4105eaa9f8aa64fab Mon Sep 17 00:00:00 2001
+From 5e2dbfcbee4c6066d685fe62e15a3ba2a1e4097e Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Fri, 22 Aug 2014 19:38:07 +0200
 Subject: [PATCH] Modified script names, disabled installer
 
 
 diff --git a/src/pocketmine/PocketMine.php b/src/pocketmine/PocketMine.php
-index 9a5188e..bf724aa 100644
+index 76cbf1a..8c28f2f 100644
 --- a/src/pocketmine/PocketMine.php
 +++ b/src/pocketmine/PocketMine.php
-@@ -68,5 +68,4 @@ namespace pocketmine {
+@@ -68,7 +68,6 @@ namespace pocketmine {
  	use pocketmine\utils\Binary;
  	use pocketmine\utils\MainLogger;
  	use pocketmine\utils\Utils;
 -	use pocketmine\wizard\Installer;
  
+ 	const VERSION = "1.4.1dev";
+ 	const API_VERSION = "1.11.0";
 @@ -356,7 +355,7 @@ namespace pocketmine {
  	}
  
@@ -38,10 +40,10 @@ index 9a5188e..bf724aa 100644
  
  	ThreadManager::init();
 diff --git a/start.cmd b/start.cmd
-index 2804a04..9ac0a8d 100644
+index 6ff3453..9762990 100644
 --- a/start.cmd
 +++ b/start.cmd
-@@ -7,8 +7,8 @@ if exist bin\php\php.exe (
+@@ -9,8 +9,8 @@ if exist bin\php\php.exe (
  	set PHP_BINARY=php
  )
  
@@ -53,10 +55,10 @@ index 2804a04..9ac0a8d 100644
  	if exist src\pocketmine\PocketMine.php (
  		set POCKETMINE_FILE=src\pocketmine\PocketMine.php
 diff --git a/start.sh b/start.sh
-index 4c85295..9680ae0 100755
+index b84f60d..843d94d 100755
 --- a/start.sh
 +++ b/start.sh
-@@ -33,12 +33,12 @@ if [ "$PHP_BINARY" == "" ]; then
+@@ -34,12 +34,12 @@ if [ "$PHP_BINARY" == "" ]; then
  fi
  
  if [ "$POCKETMINE_FILE" == "" ]; then

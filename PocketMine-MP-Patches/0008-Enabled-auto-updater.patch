@@ -1,14 +1,14 @@
-From e36d793070dd37ce704f6982bc7d98b33fdde514 Mon Sep 17 00:00:00 2001
+From dce09698108b0582d86959f40f8d2cbeee1830e1 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 01:30:53 +0200
 Subject: [PATCH] Enabled auto-updater
 
 
 diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
-index c83229c..38a8347 100644
+index 500bdf4..4330f04 100644
 --- a/src/pocketmine/Server.php
 +++ b/src/pocketmine/Server.php
-@@ -1529,9 +1529,6 @@ class Server{
+@@ -1530,9 +1530,6 @@ class Server{
  		$this->logger->info("Loading pocketmine.yml...");
  		if(!file_exists($this->dataPath . "pocketmine.yml")){
  			$content = file_get_contents($this->filePath . "src/pocketmine/resources/pocketmine.yml");
@@ -39,7 +39,7 @@ index 9edc9cb..0c9386d 100644
  
  aliases:
 diff --git a/src/pocketmine/updater/AutoUpdater.php b/src/pocketmine/updater/AutoUpdater.php
-index dbb85b9..0928c35 100644
+index 1b3e9f9..0928c35 100644
 --- a/src/pocketmine/updater/AutoUpdater.php
 +++ b/src/pocketmine/updater/AutoUpdater.php
 @@ -45,13 +45,6 @@ class AutoUpdater{

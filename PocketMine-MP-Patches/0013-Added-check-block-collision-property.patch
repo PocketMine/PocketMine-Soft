@@ -1,11 +1,11 @@
-From e5353bc303717f73732bd84a68df886e416c458b Mon Sep 17 00:00:00 2001
+From 279ffe17307dcaa72b9279ba77c406d6d8eea377 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Mon, 13 Oct 2014 23:23:00 +0200
 Subject: [PATCH] Added check-block-collision property
 
 
 diff --git a/src/pocketmine/entity/Entity.php b/src/pocketmine/entity/Entity.php
-index d089ebe..e68ec47 100644
+index 258f35f..eb9e5f1 100644
 --- a/src/pocketmine/entity/Entity.php
 +++ b/src/pocketmine/entity/Entity.php
 @@ -70,6 +70,9 @@ abstract class Entity extends Location implements Metadatable{

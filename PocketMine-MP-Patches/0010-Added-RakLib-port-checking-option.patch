@@ -1,19 +1,19 @@
-From a430507b5460e35aa0f7f43490429c6d79d06f21 Mon Sep 17 00:00:00 2001
+From f04e6fcf721cbc7fc0164fa354a70a793b5bef30 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sun, 24 Aug 2014 17:26:54 +0200
 Subject: [PATCH] Added RakLib port checking option
 
 
 diff --git a/src/pocketmine/network/RakLibInterface.php b/src/pocketmine/network/RakLibInterface.php
-index 1bb3f9d..a490765 100644
+index a1a700a..1d183bf 100644
 --- a/src/pocketmine/network/RakLibInterface.php
 +++ b/src/pocketmine/network/RakLibInterface.php
-@@ -120,6 +120,11 @@ class RakLibInterface implements ServerInstance, SourceInterface{
- 		$server = new RakLibServer($this->internalThreaded, $this->externalThreaded, $this->server->getLogger(), $this->server->getLoader(), $this->server->getPort(), $this->server->getIp() === "" ? "0.0.0.0" : $this->server->getIp());
- 		$this->interface = new ServerHandler($server, $this);
+@@ -126,6 +126,11 @@ class RakLibInterface implements ServerInstance, SourceInterface{
+ 		$this->rakLib = new RakLibServer($this->internalThreaded, $this->externalThreaded, $this->server->getLogger(), $this->server->getLoader(), $this->server->getPort(), $this->server->getIp() === "" ? "0.0.0.0" : $this->server->getIp());
+ 		$this->interface = new ServerHandler($this->rakLib, $this);
  		$this->setName($this->server->getMotd());
 +
-+		if(!$server->getAdvancedProperty("main.session-port-checking", true)){
++		if(!$this->server->getAdvancedProperty("main.session-port-checking", true)){
 +			$this->setPortCheck(false);
 +		}
 +
@@ -21,7 +21,7 @@ index 1bb3f9d..a490765 100644
  
  	public function doTick(){
 diff --git a/src/pocketmine/resources/pocketmine-soft.yml b/src/pocketmine/resources/pocketmine-soft.yml
-index 7dfa9da..7efb1f4 100644
+index 9302078..8c48027 100644
 --- a/src/pocketmine/resources/pocketmine-soft.yml
 +++ b/src/pocketmine/resources/pocketmine-soft.yml
 @@ -22,4 +22,8 @@ main:
