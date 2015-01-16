@@ -1,14 +1,14 @@
-From a4a5fd2a3f94f2aa02f736876d199d4e6a2edd75 Mon Sep 17 00:00:00 2001
+From 10c6c9bc8fd1af8120868b167d84ff65706d1b81 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sun, 5 Oct 2014 16:41:04 +0200
 Subject: [PATCH] Added check-movement property
 
 
 diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
-index 5b316cc..7923358 100644
+index 8d5f494..cbd7029 100644
 --- a/src/pocketmine/Player.php
 +++ b/src/pocketmine/Player.php
-@@ -192,6 +192,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -195,6 +195,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  
  	protected $inAirTicks = 0;
  
@@ -16,7 +16,7 @@ index 5b316cc..7923358 100644
  
  	private $needACK = [];
  
-@@ -425,6 +426,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -428,6 +429,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  		$this->setLevel($this->server->getDefaultLevel(), true);
  		$this->viewDistance = $this->server->getViewDistance();
  		$this->newPosition = new Vector3(0, 0, 0);
@@ -24,7 +24,7 @@ index 5b316cc..7923358 100644
  		$this->boundingBox = new AxisAlignedBB(0, 0, 0, 0, 0, 0);
  	}
  
-@@ -1110,10 +1112,10 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -1113,10 +1115,10 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  
  			if($this->isSurvival()){
  				if(!$revert and !$this->isSleeping()){
