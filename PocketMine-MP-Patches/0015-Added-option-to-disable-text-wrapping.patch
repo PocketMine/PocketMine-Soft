@@ -1,0 +1,37 @@
+From 111b2e04b1bfbcdd441f4e0b294773f1cc652c34 Mon Sep 17 00:00:00 2001
+From: PEMapModder <pemapmodder1970@gmail.com>
+Date: Wed, 28 Jan 2015 17:47:06 +0800
+Subject: [PATCH] Added option to disable text wrapping
+
+
+diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
+index f4a8757..48982d0 100644
+--- a/src/pocketmine/Player.php
++++ b/src/pocketmine/Player.php
+@@ -2417,7 +2417,10 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+ 	 */
+ 	public function sendMessage($message){
+ 		if($this->removeFormat !== false){
+-			$message = TextWrapper::wrap(TextFormat::clean($message));
++			$message = TextFormat::clean($message);
++			if($this->getServer()->getAdvancedProperty("main.wrap-messages", true)){
++				$message = TextWrapper::wrap($message);
++			}
+ 		}
+ 		$mes = explode("\n", $message);
+ 		foreach($mes as $m){
+diff --git a/src/pocketmine/resources/pocketmine-soft.yml b/src/pocketmine/resources/pocketmine-soft.yml
+index ee6a120..500e0b4 100644
+--- a/src/pocketmine/resources/pocketmine-soft.yml
++++ b/src/pocketmine/resources/pocketmine-soft.yml
+@@ -39,3 +39,7 @@ main:
+  #Enables RakLib client/server port checking
+  #Proxied servers might have to disable this option
+  session-port-checking: true
++
++ #Split long messages into lines before sending to players
++ #Messages with non-ASCII characters are not affected
++ wrap-messages: true
+-- 
+1.9.4.msysgit.2
+
