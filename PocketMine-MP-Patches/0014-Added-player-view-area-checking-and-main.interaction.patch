@@ -1,14 +1,14 @@
-From f81592c3e833cfca438208acde13fae981fe1487 Mon Sep 17 00:00:00 2001
+From f94a5f6eea6d3ac4c5df631ace49ddf7c7285115 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Fri, 16 Jan 2015 01:40:11 +0100
 Subject: [PATCH] Added player view area checking and main.interaction-angle
 
 
 diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
-index cbd7029..f4a8757 100644
+index b733a45..32deeb0 100644
 --- a/src/pocketmine/Player.php
 +++ b/src/pocketmine/Player.php
-@@ -1662,12 +1662,28 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -1701,12 +1701,28 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  				$packet->eid = $this->id;
  
  				if($packet->face >= 0 and $packet->face <= 5){ //Use Block, place
@@ -38,7 +38,7 @@ index cbd7029..f4a8757 100644
  
  					}elseif($this->isCreative()){
  						$item = $this->inventory->getItemInHand();
-@@ -1897,6 +1913,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -1936,6 +1952,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  
  				$this->craftingType = 0;
  
@@ -46,7 +46,7 @@ index cbd7029..f4a8757 100644
  				$target = $this->level->getEntity($packet->target);
  
  				$cancelled = false;
-@@ -1916,6 +1933,26 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+@@ -1955,6 +1972,26 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
  						return;
  					}
  
@@ -89,5 +89,5 @@ index d552658..ee6a120 100644
   #Value is in ticks, so 1 = check each tick. If 0, disable collision checks
   check-block-collision: 1
 -- 
-2.1.0
+2.1.4
 
