@@ -1,0 +1,22 @@
+From 010db38b9364b169a5db891cc2b91e8a0da64ee5 Mon Sep 17 00:00:00 2001
+From: PEMapModder <pemapmodder1970@gmail.com>
+Date: Sun, 22 Feb 2015 07:19:47 -0500
+Subject: [PATCH] Check check-movement option whwn detecting high speed
+
+
+diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
+index 32deeb0..34c0353 100644
+--- a/src/pocketmine/Player.php
++++ b/src/pocketmine/Player.php
+@@ -1260,7 +1260,7 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+ 					if($this->highSpeedTicks > 40 and !$this->server->getAllowFlight()){
+ 						$this->kick("Flying is not enabled on this server");
+ 						return false;
+-					}elseif($this->highSpeedTicks > 5){
++					}elseif($this->highSpeedTicks > 5 and $this->checkMovement){
+ 						$factor = min(1, ($speed - 0.22) / $speed);
+ 						$mot = new Vector3($this->speed->x * $factor, 0, $this->speed->z * $factor);
+ 						$this->setMotion($mot);
+-- 
+2.1.0
+
