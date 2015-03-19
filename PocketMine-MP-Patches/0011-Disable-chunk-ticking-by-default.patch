@@ -30,13 +30,6 @@ index 1e1ae86..a1874a3 100644
   #Radius of chunks around a player to tick
   tick-radius: 4
   #NOTE: This is currently not implemented
-@@ -97,4 +97,4 @@ worlds:
-  #Example:
-  #world:
-  # seed: 404
-- # generator: FLAT:2;7,59x1,3x3,2;1;decoration(treecount=80 grasscount=45)
-\ No newline at end of file
-+ # generator: FLAT:2;7,59x1,3x3,2;1;decoration(treecount=80 grasscount=45)
 -- 
 2.1.0
 
