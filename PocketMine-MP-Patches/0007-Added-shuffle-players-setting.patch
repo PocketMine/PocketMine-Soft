@@ -1,0 +1,78 @@
+From 0436e61d59f19beff45b601e578368b198bf4439 Mon Sep 17 00:00:00 2001
+From: Shoghi Cervantes <shoghicp@gmail.com>
+Date: Sat, 23 Aug 2014 01:06:28 +0200
+Subject: [PATCH] Added shuffle-players setting
+
+
+diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
+index 666dcbf..625aea3 100644
+--- a/src/pocketmine/Server.php
++++ b/src/pocketmine/Server.php
+@@ -238,6 +238,9 @@ class Server{
+ 	/** @var Config */
+ 	private $softConfig;
+ 
++	private $shufflePlayerTicks = -1;
++	private $shufflePlayerTicker = 0;
++
+ 	/** @var Player[] */
+ 	private $players = [];
+ 
+@@ -1804,6 +1807,10 @@ class Server{
+ 
+ 		$this->enablePlugins(PluginLoadOrder::POSTWORLD);
+ 
++		if($this->getAdvancedProperty("main.player-shuffle", 0) > 0){
++			$this->shufflePlayerTicker = $this->shufflePlayerTicks = (int) $this->getAdvancedProperty("main.player-shuffle", 0);
++		}
++
+ 		$this->start();
+ 	}
+ 
+@@ -2494,6 +2501,11 @@ class Server{
+ 			$this->sendUsage();
+ 		}
+ 
++		if($this->shufflePlayerTicks > 0 and --$this->shufflePlayerTicker === 0){
++			$this->shufflePlayerTicker = $this->shufflePlayerTicks;
++			$this->shufflePlayers();
++		}
++
+ 		if(($this->tickCounter % 100) === 0){
+ 			foreach($this->levels as $level){
+ 				$level->clearCache();
+@@ -2558,4 +2570,19 @@ class Server{
+ 		Tile::registerTile(Sign::class);
+ 	}
+ 
++	public function shufflePlayers(){
++		if(count($this->players) <= 1){
++			return;
++		}
++
++		$keys = array_keys($this->players);
++		shuffle($keys);
++		$random = [];
++		foreach ($keys as $key) {
++			$random[$key] = $this->players[$key];
++		}
++
++		$this->players = $random;
++	}
++
+ }
+diff --git a/src/pocketmine/resources/pocketmine-soft.yml b/src/pocketmine/resources/pocketmine-soft.yml
+index 07ef15e..a7be578 100644
+--- a/src/pocketmine/resources/pocketmine-soft.yml
++++ b/src/pocketmine/resources/pocketmine-soft.yml
+@@ -19,3 +19,7 @@ messages:
+ main:
+  #Block unknown items from creative-mode players
+  filter-creative-items: true
++ 
++ #Shuffle the player list to prevent players from 'gaming' the server, getting high priority on the tick list.
++ #Value is in ticks, so 20 = shuffle each second
++ player-shuffle: 0
+-- 
+2.1.4
+

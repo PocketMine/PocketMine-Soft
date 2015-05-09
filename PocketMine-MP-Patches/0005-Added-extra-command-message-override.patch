@@ -1,0 +1,82 @@
+From ad1543395571fcda70ef3cb0b7e6d8ab24ba0a4c Mon Sep 17 00:00:00 2001
+From: Shoghi Cervantes <shoghicp@gmail.com>
+Date: Sat, 23 Aug 2014 00:56:33 +0200
+Subject: [PATCH] Added extra command message override
+
+
+diff --git a/.gitignore b/.gitignore
+index 9949dd7..9e16a36 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -8,6 +8,7 @@ timings/*
+ *.phar
+ server.properties
+ pocketmine.yml
++pocketmine-soft.yml
+ 
+ # Common IDEs
+ .idea/*
+diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
+index 8ce98e2..666dcbf 100644
+--- a/src/pocketmine/Server.php
++++ b/src/pocketmine/Server.php
+@@ -1986,8 +1986,10 @@ class Server{
+ 			return true;
+ 		}
+ 
+-
+-		$sender->sendMessage(new TranslationContainer(TextFormat::RED . "%commands.generic.notFound"));
++		$message = $this->getAdvancedProperty("messages.unknown-command", "%commands.generic.notFound");
++		if(is_string($message) and strlen($message) > 0){
++			$sender->sendMessage(new TranslationContainer($message));
++		}
+ 
+ 		return false;
+ 	}
+diff --git a/src/pocketmine/command/Command.php b/src/pocketmine/command/Command.php
+index 5cb6a4a..889055e 100644
+--- a/src/pocketmine/command/Command.php
++++ b/src/pocketmine/command/Command.php
+@@ -126,7 +126,10 @@ abstract class Command{
+ 		}
+ 
+ 		if($this->permissionMessage === null){
+-			$target->sendMessage(new TranslationContainer(TextFormat::RED . "%commands.generic.permission"));
++			$message = $target->getServer()->getAdvancedProperty("messages.command-permissions", TextFormat::RED . "%commands.generic.permission");
++			if(is_string($message) and strlen($message) > 0){
++				$target->sendMessage(new TranslationContainer($message));
++			}
+ 		}elseif($this->permissionMessage !== ""){
+ 			$target->sendMessage(str_replace("<permission>", $this->permission, $this->permissionMessage));
+ 		}
+diff --git a/src/pocketmine/resources/pocketmine-soft.yml b/src/pocketmine/resources/pocketmine-soft.yml
+index a19abf1..ae117ab 100644
+--- a/src/pocketmine/resources/pocketmine-soft.yml
++++ b/src/pocketmine/resources/pocketmine-soft.yml
+@@ -1,9 +1,17 @@
+ # Advanced configuration file for PocketMine-Soft
+ 
+-# Lists the plugins that should be downloaded if non existent to the server.
+-# Plugin names are case-sensitive.
+-# Plugins can also be in the current filesystem
++#Lists the plugins that should be downloaded if non existent to the server.
++#Plugin names are case-sensitive.
++#Plugins can also be in the current filesystem
+ plugins:
+  #Examples:
+  #BigBrother: "https://github.com/shoghicp/BigBrother/releases/download/v1.3.0-beta/BigBrother_v1.3.0-beta.phar"
+- #SimpleAuth: "/full/path/to/file/SimpleAuth.phar"
+\ No newline at end of file
++ #SimpleAuth: "/full/path/to/file/SimpleAuth.phar"
++
++messages:
++ #Message shown when a player uses a not registered or non-existent command
++ unknown-command: "%commands.generic.notFound"
++
++ #Message shown by default when a player doesn't have permissions to use a command
++ #Can be overriden by the command
++ command-permissions: "%commands.generic.permission"
+\ No newline at end of file
+-- 
+2.1.4
+

@@ -1,0 +1,79 @@
+From 62daf5aa7d146009367598088c00f5bd1c67089e Mon Sep 17 00:00:00 2001
+From: Shoghi Cervantes <shoghicp@gmail.com>
+Date: Fri, 22 Aug 2014 19:38:07 +0200
+Subject: [PATCH] Modified script names, disabled installer
+
+
+diff --git a/src/pocketmine/PocketMine.php b/src/pocketmine/PocketMine.php
+index 8ba486d..e9ea875 100644
+--- a/src/pocketmine/PocketMine.php
++++ b/src/pocketmine/PocketMine.php
+@@ -69,7 +69,6 @@ namespace pocketmine {
+ 	use pocketmine\utils\MainLogger;
+ 	use pocketmine\utils\Terminal;
+ 	use pocketmine\utils\Utils;
+-	use pocketmine\wizard\Installer;
+ 
+ 	const VERSION = "1.5dev";
+ 	const API_VERSION = "1.12.0";
+@@ -377,7 +376,7 @@ namespace pocketmine {
+ 	}
+ 
+ 	if(php_sapi_name() !== "cli"){
+-		$logger->critical("You must run PocketMine-MP using the CLI.");
++		$logger->critical("You must run PocketMine-Soft using the CLI.");
+ 		++$errors;
+ 	}
+ 
+@@ -451,12 +450,8 @@ namespace pocketmine {
+ 	@define("INT32_MASK", is_int(0xffffffff) ? 0xffffffff : -1);
+ 	@ini_set("opcache.mmap_base", bin2hex(Utils::getRandomBytes(8, false))); //Fix OPCache address errors
+ 
+-	if(!file_exists(\pocketmine\DATA . "server.properties") and !isset($opts["no-wizard"])){
+-		new Installer();
+-	}
+-
+ 	if(\Phar::running(true) === ""){
+-		$logger->warning("Non-packaged PocketMine-MP installation detected, do not use on production.");
++		$logger->warning("Non-packaged PocketMine-Soft installation detected, do not use on production.");
+ 	}
+ 
+ 	ThreadManager::init();
+diff --git a/start.cmd b/start.cmd
+index 6ff3453..9762990 100644
+--- a/start.cmd
++++ b/start.cmd
+@@ -9,8 +9,8 @@ if exist bin\php\php.exe (
+ 	set PHP_BINARY=php
+ )
+ 
+-if exist PocketMine-MP.phar (
+-	set POCKETMINE_FILE=PocketMine-MP.phar
++if exist PocketMine-Soft.phar (
++	set POCKETMINE_FILE=PocketMine-Soft.phar
+ ) else (
+ 	if exist src\pocketmine\PocketMine.php (
+ 		set POCKETMINE_FILE=src\pocketmine\PocketMine.php
+diff --git a/start.sh b/start.sh
+index b84f60d..843d94d 100755
+--- a/start.sh
++++ b/start.sh
+@@ -34,12 +34,12 @@ if [ "$PHP_BINARY" == "" ]; then
+ fi
+ 
+ if [ "$POCKETMINE_FILE" == "" ]; then
+-	if [ -f ./PocketMine-MP.phar ]; then
+-		POCKETMINE_FILE="./PocketMine-MP.phar"
++	if [ -f ./PocketMine-Soft.phar ]; then
++		POCKETMINE_FILE="./PocketMine-Soft.phar"
+ 	elif [ -f ./src/pocketmine/PocketMine.php ]; then
+ 		POCKETMINE_FILE="./src/pocketmine/PocketMine.php"
+ 	else
+-		echo "Couldn't find a valid PocketMine-MP installation"
++		echo "Couldn't find a valid PocketMine-Soft installation"
+ 		exit 1
+ 	fi
+ fi
+-- 
+2.1.4
+

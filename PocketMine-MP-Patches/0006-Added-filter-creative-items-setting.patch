@@ -1,0 +1,38 @@
+From 54a36ee55e49691dc5b85d0a9c3ee43bf9160674 Mon Sep 17 00:00:00 2001
+From: Shoghi Cervantes <shoghicp@gmail.com>
+Date: Sat, 23 Aug 2014 00:59:36 +0200
+Subject: [PATCH] Added filter-creative-items setting
+
+
+diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
+index 50d232e..f6118c2 100644
+--- a/src/pocketmine/Player.php
++++ b/src/pocketmine/Player.php
+@@ -1749,6 +1749,9 @@ class Player extends Human implements CommandSender, InventoryHolder, IPlayer{
+ 				if($this->isCreative()){ //Creative mode match
+ 					$item = Item::get($packet->item, $packet->meta, 1);
+ 					$slot = Item::getCreativeItemIndex($item);
++					if($slot === -1 and !$this->getServer()->getAdvancedProperty("main.filter-creative-items", true)){
++						$slot = 0;
++					}
+ 				}else{
+ 					$item = $this->inventory->getItem($packet->slot);
+ 					$slot = $packet->slot;
+diff --git a/src/pocketmine/resources/pocketmine-soft.yml b/src/pocketmine/resources/pocketmine-soft.yml
+index ae117ab..07ef15e 100644
+--- a/src/pocketmine/resources/pocketmine-soft.yml
++++ b/src/pocketmine/resources/pocketmine-soft.yml
+@@ -14,4 +14,8 @@ messages:
+ 
+  #Message shown by default when a player doesn't have permissions to use a command
+  #Can be overriden by the command
+- command-permissions: "%commands.generic.permission"
+\ No newline at end of file
++ command-permissions: "%commands.generic.permission"
++
++main:
++ #Block unknown items from creative-mode players
++ filter-creative-items: true
+-- 
+2.1.4
+
