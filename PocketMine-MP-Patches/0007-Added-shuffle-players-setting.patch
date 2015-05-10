@@ -1,11 +1,11 @@
-From 0436e61d59f19beff45b601e578368b198bf4439 Mon Sep 17 00:00:00 2001
+From cf88a6b408718042422a2cf2c74748575ce5617e Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 01:06:28 +0200
 Subject: [PATCH] Added shuffle-players setting
 
 
 diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
-index 666dcbf..625aea3 100644
+index fed140c..c48a2da 100644
 --- a/src/pocketmine/Server.php
 +++ b/src/pocketmine/Server.php
 @@ -238,6 +238,9 @@ class Server{
@@ -29,7 +29,7 @@ index 666dcbf..625aea3 100644
  		$this->start();
  	}
  
-@@ -2494,6 +2501,11 @@ class Server{
+@@ -2496,6 +2503,11 @@ class Server{
  			$this->sendUsage();
  		}
  
@@ -41,7 +41,7 @@ index 666dcbf..625aea3 100644
  		if(($this->tickCounter % 100) === 0){
  			foreach($this->levels as $level){
  				$level->clearCache();
-@@ -2558,4 +2570,19 @@ class Server{
+@@ -2560,4 +2572,19 @@ class Server{
  		Tile::registerTile(Sign::class);
  	}
  
