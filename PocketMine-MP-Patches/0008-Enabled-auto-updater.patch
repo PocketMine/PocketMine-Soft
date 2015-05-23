@@ -1,29 +1,15 @@
-From 3da1ea4f3eaa4859168636c1c6a40a14c08ec073 Mon Sep 17 00:00:00 2001
+From 0d27bcd0a88975a409c4887486b6e58115abd382 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 01:30:53 +0200
 Subject: [PATCH] Enabled auto-updater
 
 
-diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
-index 625aea3..9495400 100644
---- a/src/pocketmine/Server.php
-+++ b/src/pocketmine/Server.php
-@@ -1567,9 +1567,6 @@ class Server{
- 		$this->logger->info("Loading pocketmine.yml...");
- 		if(!file_exists($this->dataPath . "pocketmine.yml")){
- 			$content = file_get_contents($this->filePath . "src/pocketmine/resources/pocketmine.yml");
--			if($version->isDev()){
--				$content = str_replace("preferred-channel: stable", "preferred-channel: beta", $content);
--			}
- 			@file_put_contents($this->dataPath . "pocketmine.yml", $content);
- 		}
- 		$this->config = new Config($this->dataPath . "pocketmine.yml", Config::YAML, []);
 diff --git a/src/pocketmine/resources/pocketmine.yml b/src/pocketmine/resources/pocketmine.yml
-index 9f85c7c..3829f3e 100644
+index a112a2c..d62dbb3 100644
 --- a/src/pocketmine/resources/pocketmine.yml
 +++ b/src/pocketmine/resources/pocketmine.yml
-@@ -146,14 +146,10 @@ auto-report:
-  host: crash.pocketmine.net
+@@ -151,14 +151,10 @@ anonymous-statistics:
+  host: stats.pocketmine.net
  
  auto-updater:
 - enabled: false

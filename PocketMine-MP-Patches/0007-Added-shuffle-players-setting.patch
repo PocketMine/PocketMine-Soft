@@ -1,14 +1,14 @@
-From cf88a6b408718042422a2cf2c74748575ce5617e Mon Sep 17 00:00:00 2001
+From b7cdc532012c5841112d018c9779508c4d64a12d Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 01:06:28 +0200
 Subject: [PATCH] Added shuffle-players setting
 
 
 diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
-index fed140c..c48a2da 100644
+index 42d104c..8390f3b 100644
 --- a/src/pocketmine/Server.php
 +++ b/src/pocketmine/Server.php
-@@ -238,6 +238,9 @@ class Server{
+@@ -241,6 +241,9 @@ class Server{
  	/** @var Config */
  	private $softConfig;
  
@@ -18,7 +18,7 @@ index fed140c..c48a2da 100644
  	/** @var Player[] */
  	private $players = [];
  
-@@ -1804,6 +1807,10 @@ class Server{
+@@ -1821,6 +1824,10 @@ class Server{
  
  		$this->enablePlugins(PluginLoadOrder::POSTWORLD);
  
@@ -29,8 +29,8 @@ index fed140c..c48a2da 100644
  		$this->start();
  	}
  
-@@ -2496,6 +2503,11 @@ class Server{
- 			$this->sendUsage();
+@@ -2555,6 +2562,11 @@ class Server{
+ 			$this->sendUsage(SendUsageTask::TYPE_STATUS);
  		}
  
 +		if($this->shufflePlayerTicks > 0 and --$this->shufflePlayerTicker === 0){
@@ -41,7 +41,7 @@ index fed140c..c48a2da 100644
  		if(($this->tickCounter % 100) === 0){
  			foreach($this->levels as $level){
  				$level->clearCache();
-@@ -2560,4 +2572,19 @@ class Server{
+@@ -2619,4 +2631,19 @@ class Server{
  		Tile::registerTile(Sign::class);
  	}
  

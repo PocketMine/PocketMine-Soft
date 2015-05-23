@@ -1,4 +1,4 @@
-From ef1c412795808b29e2532e95bbe2921b9b0c1996 Mon Sep 17 00:00:00 2001
+From b5be8ad5a6819c7b43a887bdb9242fa851cf179a Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 00:56:33 +0200
 Subject: [PATCH] Added extra command message override
@@ -17,10 +17,10 @@ index 9949dd7..9e16a36 100644
  # Common IDEs
  .idea/*
 diff --git a/src/pocketmine/Server.php b/src/pocketmine/Server.php
-index 0451c78..fed140c 100644
+index b47fba7..42d104c 100644
 --- a/src/pocketmine/Server.php
 +++ b/src/pocketmine/Server.php
-@@ -1988,8 +1988,10 @@ class Server{
+@@ -2059,8 +2059,10 @@ class Server{
  			return true;
  		}
  
