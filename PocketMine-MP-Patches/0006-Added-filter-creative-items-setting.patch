@@ -1,14 +1,14 @@
-From c9b45f1be29341d8819f78037676e34a532d2632 Mon Sep 17 00:00:00 2001
+From 7f64289004342fd8fafc113472101168016af1c1 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 00:59:36 +0200
 Subject: [PATCH] Added filter-creative-items setting
 
 
 diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
-index 114b24c..e8c4503 100644
+index 0c2c297..0323915 100644
 --- a/src/pocketmine/Player.php
 +++ b/src/pocketmine/Player.php
-@@ -1759,6 +1759,9 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
+@@ -1798,6 +1798,9 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
  				if($this->isCreative()){ //Creative mode match
  					$item = Item::get($packet->item, $packet->meta, 1);
  					$slot = Item::getCreativeItemIndex($item);

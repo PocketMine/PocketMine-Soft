@@ -1,14 +1,14 @@
-From 0d27bcd0a88975a409c4887486b6e58115abd382 Mon Sep 17 00:00:00 2001
+From 29521289a0fbd3dbd30ad7add63be7c9e4108020 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sat, 23 Aug 2014 01:30:53 +0200
 Subject: [PATCH] Enabled auto-updater
 
 
 diff --git a/src/pocketmine/resources/pocketmine.yml b/src/pocketmine/resources/pocketmine.yml
-index a112a2c..d62dbb3 100644
+index c283d49..98f81cc 100644
 --- a/src/pocketmine/resources/pocketmine.yml
 +++ b/src/pocketmine/resources/pocketmine.yml
-@@ -151,14 +151,10 @@ anonymous-statistics:
+@@ -150,14 +150,10 @@ anonymous-statistics:
   host: stats.pocketmine.net
  
  auto-updater:

@@ -1,11 +1,11 @@
-From e8a88fdb85fac910b4288af8542b7d27361336b2 Mon Sep 17 00:00:00 2001
+From 4e821cf28475fa847ad061fa6d5892d2058476d8 Mon Sep 17 00:00:00 2001
 From: Shoghi Cervantes <shoghicp@gmail.com>
 Date: Sun, 5 Oct 2014 16:41:04 +0200
 Subject: [PATCH] Added check-movement property
 
 
 diff --git a/src/pocketmine/Player.php b/src/pocketmine/Player.php
-index e8c4503..9f0dabb 100644
+index 0323915..1a3e4ba 100644
 --- a/src/pocketmine/Player.php
 +++ b/src/pocketmine/Player.php
 @@ -230,6 +230,8 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
@@ -18,14 +18,14 @@ index e8c4503..9f0dabb 100644
  
  	private $batchedPackets = [];
 @@ -505,6 +507,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
- 		$this->setLevel($this->server->getDefaultLevel(), true);
+ 		$this->setLevel($this->server->getDefaultLevel());
  		$this->viewDistance = $this->server->getViewDistance();
  		$this->newPosition = new Vector3(0, 0, 0);
 +		$this->checkMovement = (bool) $this->server->getAdvancedProperty("main.check-movement", true);
  		$this->boundingBox = new AxisAlignedBB(0, 0, 0, 0, 0, 0);
  
- 		$this->uuid = Utils::dataToUUID($ip, $port, $clientID);
-@@ -1260,10 +1263,21 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
+ 		$this->motionToSend = new SetEntityMotionPacket();
+@@ -1301,10 +1304,21 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
  			$dy = $newPos->y - $this->y;
  			$dz = $newPos->z - $this->z;
  
