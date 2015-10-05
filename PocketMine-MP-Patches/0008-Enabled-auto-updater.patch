@@ -49,7 +49,7 @@ index 1b3e9f9..0928c35 100644
 -		$logger->warning("----- PocketMine-MP Auto Updater -----");
 -		$logger->warning("Your version of PocketMine-MP is out of date. Version " . $newVersion->get(false) . " (build #" . $newVersion->getBuild() . ") was released on " . date("D M j h:i:s Y", $this->updateInfo["date"]));
 +		$logger->warning("----- PocketMine-Soft Auto Updater -----");
-+		$logger->warning("Your version of PocketMine-SoftP is out of date. Version " . $newVersion->get(false) . " (build #" . $newVersion->getBuild() . ") was released on " . date("D M j h:i:s Y", $this->updateInfo["date"]));
++		$logger->warning("Your version of PocketMine-Soft is out of date. Version " . $newVersion->get(false) . " (build #" . $newVersion->getBuild() . ") was released on " . date("D M j h:i:s Y", $this->updateInfo["date"]));
  		if($this->updateInfo["details_url"] !== null){
  			$logger->warning("Details: " . $this->updateInfo["details_url"]);
  		}
